@@ -62,17 +62,59 @@ def cloud_chat_json(system: str, user: str) -> dict:
 
 # ---------------------------------------------------------------- device (local)
 _local: dict[str, tuple] = {}
+_lora: dict = {}          # rank/scale the resident LoRA layers were built with
 
 
-def device_chat_json(system: str, user: str, max_tokens: int = 600) -> dict:
-    """Local, greedy (deterministic) generation on the sealed device. Offline:
-    loads only the pinned snapshot already on disk."""
+def device_model():
+    """The resident model and tokenizer (pinned snapshot on disk, offline)."""
     from huggingface_hub import snapshot_download
-    from mlx_lm import generate, load
+    from mlx_lm import load
     if DEVICE_MODEL not in _local:
         path = snapshot_download(DEVICE_MODEL, revision=DEVICE_REVISION, local_files_only=True)
         _local[DEVICE_MODEL] = load(path)
-    model, tok = _local[DEVICE_MODEL]
+    return _local[DEVICE_MODEL]
+
+
+def use_adapter(weights: dict | None, config: dict | None = None, adapter_path: str | None = None) -> float:
+    """Swap the adapter in the resident model; None restores the base model. LoRA layers
+    are added once; a swap only replaces their weights (lora_b = 0 is exactly the base
+    model). Returns the swap time in seconds."""
+    import time
+
+    import mlx.core as mx
+    import numpy as np
+    from mlx.utils import tree_flatten
+    from mlx_lm.tuner.utils import linear_to_lora_layers
+    model, _ = device_model()
+    if adapter_path is not None:
+        from safetensors.numpy import load_file
+        weights = load_file(os.path.join(adapter_path, "adapters.safetensors"))
+        config = json.load(open(os.path.join(adapter_path, "adapter_config.json")))
+    t = time.perf_counter()
+    if not _lora:
+        cfg = config or dict(num_layers=36, lora_parameters=dict(
+            rank=16, scale=2.0, dropout=0.0, keys=["self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj",
+                                                   "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]))
+        linear_to_lora_layers(model, cfg["num_layers"], cfg["lora_parameters"])
+        _lora.update(cfg["lora_parameters"])
+        _lora["zeros"] = [(k, mx.zeros_like(v)) for k, v in tree_flatten(model.parameters())
+                          if k.endswith(".lora_b")]
+    if config is not None:
+        lp = config["lora_parameters"]
+        assert (lp["rank"], lp["scale"]) == (_lora["rank"], _lora["scale"]), "adapter shape differs from resident layers"
+    if weights is None:
+        model.load_weights(_lora["zeros"], strict=False)
+    else:
+        model.load_weights([(k, mx.array(np.asarray(v))) for k, v in weights.items()], strict=False)
+    mx.eval(model.parameters())
+    return time.perf_counter() - t
+
+
+def device_chat_json(system: str, user: str, max_tokens: int = 600) -> dict:
+    """Local, greedy (deterministic) generation on the sealed device with whatever
+    adapter is resident (see use_adapter)."""
+    from mlx_lm import generate
+    model, tok = device_model()
     messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     out = ""
     for _ in range(2):
@@ -86,3 +128,15 @@ def device_chat_json(system: str, user: str, max_tokens: int = 600) -> dict:
                 {"role": "assistant", "content": out},
                 {"role": "user", "content": "Reply with ONLY the JSON object."}]
     raise ValueError(f"device model did not return JSON: {out[:200]!r}")
+
+
+def device_nll(input_ids: list[int], n_prompt: int) -> float:
+    """Mean negative log-likelihood per target token (tokens after n_prompt)."""
+    import mlx.core as mx
+    model, _ = device_model()
+    ids = mx.array([input_ids])
+    logits = model(ids)[0, :-1].astype(mx.float32)
+    lp = logits - mx.logsumexp(logits, axis=-1, keepdims=True)
+    tgt = ids[0, 1:]
+    tok_lp = mx.take_along_axis(lp, tgt[:, None], axis=-1)[:, 0]
+    return float(-tok_lp[n_prompt - 1:].mean())
