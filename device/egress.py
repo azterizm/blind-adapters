@@ -6,12 +6,12 @@ allows bytes to leave the device on exactly two public channels:
 
   "sync" : public artifacts the device pulled from the cloud and echoes back (the
            catalogue / task program). Must contain no tainted data.
-  "pir"  : a SimplePIR query vector. This is the ONLY channel whose content depends
+  "pir"  : a SimplePIR query vector, or a batch of them. This is the ONLY channel whose content depends
            (indirectly) on the case -- it encodes which statute row is wanted. That
            dependence is cryptographically hidden: the query is an LWE sample,
            pseudorandom and of a distribution independent of the index. The guard
-           therefore "declassifies" a PIR query only if it is a fixed-shape int64
-           vector in [0, Q) that passes a uniformity sanity check -- i.e. it is a
+           therefore "declassifies" a PIR query only if it is a uint32 or int64
+           vector or matrix in [0, Q) that passes a uniformity sanity check -- i.e. it is a
            ciphertext, not raw tainted data smuggled out.
 
 Anything else carrying tainted bytes is blocked and logged as a leak attempt. The
@@ -48,9 +48,10 @@ class EgressGuard:
 
     # -- channel checkers -------------------------------------------------------
     def _looks_like_pir_query(self, payload) -> bool:
-        if not isinstance(payload, np.ndarray) or payload.ndim != 1:
+        # a single query vector, or a batch of query vectors (one per row)
+        if not isinstance(payload, np.ndarray) or payload.ndim not in (1, 2) or payload.size < 64:
             return False
-        if payload.dtype != np.int64 or payload.min() < 0 or payload.max() >= Q:
+        if payload.dtype not in (np.uint32, np.int64) or payload.min() < 0 or int(payload.max()) >= Q:
             return False
         # a genuine LWE query is ~uniform on [0,Q); a raw index vector (one-hot or
         # small integers) is not. Require the mean near Q/2 and high entropy.
