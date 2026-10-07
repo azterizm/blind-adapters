@@ -1,0 +1,48 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s108",
+ "coordinate": "uk/ukpga/1996/18/s108",
+ "kind": "explain",
+ "summary": "This provision establishes the qualifying period of continuous employment required for an employee to bring an unfair dismissal claim under section 94. Generally, an employee must have at least two years of continuous service, reduced to one month for dismissals arising from specified medical or regulatory suspensions under section 64(2). The qualifying service requirement is entirely excluded where the dismissal falls under designated statutory exceptions, or where the reason relates to the employee's political opinions, affiliation, or reserve force membership.",
+ "elements": [
+  {
+   "requirement": "General continuous employment requirement for section 94 to apply to an employee's dismissal",
+   "quote": "continuously employed for a period of not less than two years ending with the effective date of termination"
+  },
+  {
+   "requirement": "Modification of the qualifying service period where the dismissal relates to section 64(2)",
+   "quote": "dismissed by reason of any such requirement or recommendation as is referred to in section 64(2)"
+  },
+  {
+   "requirement": "Disapplication of the qualifying service requirement where specific statutory and regulatory provisions apply",
+   "quote": "Subsection (1) does not apply if"
+  },
+  {
+   "requirement": "Disapplication of the qualifying service requirement based on political grounds",
+   "quote": "the reason (or, if more than one, the principal reason) for the dismissal is, or relates to, the employee's political opinions or affiliation"
+  },
+  {
+   "requirement": "Disapplication of the qualifying service requirement based on armed forces reserve status",
+   "quote": "the reason (or, if more than one, the principal reason) for the dismissal is, or is connected with, the employee's membership of a reserve force"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Standard period of continuous employment required to bring an unfair dismissal claim",
+   "value": "2 years",
+   "quote": "two years"
+  },
+  {
+   "what": "Substituted continuous employment period for dismissals falling under section 64(2)",
+   "value": "1 month",
+   "quote": "one month"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 5,
+  "elements_verified": 5,
+  "thresholds_proposed": 2,
+  "thresholds_verified": 2,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

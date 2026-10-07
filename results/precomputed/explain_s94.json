@@ -1,0 +1,33 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s94",
+ "coordinate": "uk/ukpga/1996/18/s94",
+ "kind": "explain",
+ "summary": "This section confers on an employee the statutory right not to be unfairly dismissed by their employer. However, the exercise of this right is not absolute and operates subject to qualifying limitations and provisions set out in this Part of the Act. It is also subject to specific exclusions and rules contained within the Trade Union and Labour Relations (Consolidation) Act 1992.",
+ "elements": [
+  {
+   "requirement": "The individual must hold the status of an employee.",
+   "quote": "An employee"
+  },
+  {
+   "requirement": "The individual possesses a statutory right against unfair dismissal by their employer.",
+   "quote": "right not to be unfairly dismissed by his employer"
+  },
+  {
+   "requirement": "The right is conditioned by and subordinate to other specified statutory provisions in this Part.",
+   "quote": "has effect subject to the following provisions of this Part"
+  },
+  {
+   "requirement": "The right is conditioned by and subordinate to provisions under the Trade Union and Labour Relations (Consolidation) Act 1992.",
+   "quote": "to the provisions of the Trade Union and Labour Relations (Consolidation) Act 1992"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 4,
+  "elements_verified": 4,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

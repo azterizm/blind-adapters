@@ -1,0 +1,18 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s155",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s155",
+ "params": {
+  "qualifying_years": {
+   "value": 2.0,
+   "quote": "continuously employed for a period of not less than two years ending with the relevant date"
+  }
+ },
+ "audit": {
+  "proposed": 1,
+  "verified": 1,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

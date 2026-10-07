@@ -1,0 +1,33 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s135",
+ "coordinate": "uk/ukpga/1996/18/s135",
+ "kind": "explain",
+ "summary": "This section establishes the general statutory duty of an employer to pay a redundancy payment to an employee. It applies where the employee is either dismissed by reason of redundancy or qualifies after being laid off or kept on short-time. This primary obligation operates subject to other relevant provisions contained within this Part of the Act.",
+ "elements": [
+  {
+   "requirement": "The employer must make a redundancy payment to their employee.",
+   "quote": "An employer shall pay a redundancy payment to any employee of his"
+  },
+  {
+   "requirement": "The employee is dismissed by the employer because of redundancy.",
+   "quote": "is dismissed by the employer by reason of redundancy"
+  },
+  {
+   "requirement": "Alternatively, the employee is eligible for the payment due to lay-off or short-time.",
+   "quote": "is eligible for a redundancy payment by reason of being laid off or kept on short-time"
+  },
+  {
+   "requirement": "The general obligation to pay is subject to the other specified statutory rules and limitations in this Part.",
+   "quote": "has effect subject to the following provisions of this Part"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 4,
+  "elements_verified": 4,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

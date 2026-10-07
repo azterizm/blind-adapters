@@ -1,0 +1,37 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s97",
+ "coordinate": "uk/ukpga/1996/18/s97",
+ "kind": "explain",
+ "summary": "This section defines the 'effective date of termination' based on whether an employment contract is terminated with notice, without notice, or upon the occurrence of a limiting event in a limited-term contract. It also establishes an artificial extension of this date where statutory notice under section 86 was not given or would have expired later, specifically for the purposes of qualifying service and statutory calculations under sections 108(1), 119(1), and 227(3).",
+ "elements": [
+  {
+   "requirement": "Where a contract of employment is terminated by notice by either party, the effective date of termination is the date that notice runs out.",
+   "quote": "means the date on which the notice expires"
+  },
+  {
+   "requirement": "Where a contract of employment is terminated without notice, the effective date of termination is the date the dismissal or resignation takes effect.",
+   "quote": "means the date on which the termination takes effect"
+  },
+  {
+   "requirement": "Where a limited-term contract ends by the limiting event without being renewed under the same contract, the effective date of termination is when that termination takes effect.",
+   "quote": "terminates by virtue of the limiting event without being renewed under the same contract, means the date on which the termination takes effect"
+  },
+  {
+   "requirement": "If the employer terminates the contract and statutory notice required under section 86 given on the material date would expire later than the standard effective date of termination, the later date applies for sections 108(1), 119(1), and 227(3).",
+   "quote": "the notice required by section 86 to be given by an employer would, if duly given on the material date, expire on a date later than the effective date of termination"
+  },
+  {
+   "requirement": "If the employee terminates the contract outside of an employer's notice period, and hypothetical section 86 notice given by the employer on the material date would expire later than the standard effective date of termination, the later date applies for sections 108(1), 119(1), and 227(3).",
+   "quote": "had the contract been terminated not by the employee but by notice given on the material date by the employer, that notice would have been required by section 86 to expire on a date later than the effective date of termination"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 5,
+  "elements_verified": 5,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

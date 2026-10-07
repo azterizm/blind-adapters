@@ -1,0 +1,41 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s139",
+ "coordinate": "uk/ukpga/1996/18/s139",
+ "kind": "explain",
+ "summary": "This section defines when an employee's dismissal is taken to be by reason of redundancy under the Act. A dismissal is for redundancy if it is wholly or mainly attributable to the employer ceasing or intending to cease business (either entirely or in the place where the employee worked), or to the business's requirements for employees to perform work of a particular kind ceasing or diminishing. It also provides rules treating associated employers and local authority maintained schools as a single business, and covers certain non-renewed contracts terminated under section 136(5).",
+ "elements": [
+  {
+   "requirement": "The dismissal must be wholly or mainly attributable to specified business cessations or diminished employee requirements.",
+   "quote": "wholly or mainly attributable to"
+  },
+  {
+   "requirement": "The employer must have ceased or intend to cease carrying on the business for which the employee was employed, or carrying on that business in the place the employee was employed.",
+   "quote": "the fact that his employer has ceased or intends to cease"
+  },
+  {
+   "requirement": "The requirements of the business for employees to carry out work of a particular kind, or such work in the place where the employee was employed, must have ceased or diminished, or be expected to do so permanently or temporarily.",
+   "quote": "have ceased or diminished or are expected to cease or diminish"
+  },
+  {
+   "requirement": "The business of the employer and associated employers must be treated as one, unless redundancy conditions are satisfied without doing so.",
+   "quote": "shall be treated as one"
+  },
+  {
+   "requirement": "Activities carried on by a local authority with respect to maintained schools and the activities of those schools' governing bodies must be treated as one business, unless redundancy conditions are met without doing so.",
+   "quote": "shall be treated as one business"
+  },
+  {
+   "requirement": "Where a contract terminates under section 136(5) and is not renewed or the employee is not re-engaged, it is treated as a redundancy if the failure to renew or re-engage is wholly or mainly attributable to the statutory business grounds.",
+   "quote": "the employee’s contract is not renewed and he is not re-engaged under a new contract of employment"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 6,
+  "elements_verified": 6,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

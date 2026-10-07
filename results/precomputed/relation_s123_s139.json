@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s123|uk/ukpga/1996/18/s139",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s123",
+ "b": "uk/ukpga/1996/18/s139",
+ "basis": [
+  "s123 uses \"by reason of redundancy\", defined in s139"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 139 establishes the statutory standard under the Act for determining when an employee is taken to be dismissed by reason of redundancy. Section 123 directly engages this concept in subsections (3) and (7) when assessing loss or applying deductions relating to payments made or expected on the ground of dismissal by reason of redundancy. Practitioners must therefore apply the criteria in section 139 to evaluate whether redundancy-related adjustments to the compensatory award under section 123 are triggered.",
+ "quote_a": "dismissal by reason of redundancy",
+ "quote_b": "dismissed by reason of redundancy",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

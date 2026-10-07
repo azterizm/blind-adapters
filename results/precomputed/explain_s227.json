@@ -1,0 +1,31 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s227",
+ "coordinate": "uk/ukpga/1996/18/s227",
+ "kind": "explain",
+ "summary": "This section establishes a statutory cap on the figure used as a week's pay when calculating certain employment awards and payments. It applies specifically to redundancy payments, basic and additional awards for unfair dismissal, and compensation awards under sections 63J(1)(b), 80I(1)(b), and 112(5). For any of these calculations, the weekly pay figure taken into account cannot exceed £751.",
+ "elements": [
+  {
+   "requirement": "The calculation must concern an award under section 63J(1)(b), section 80I(1)(b), or section 112(5), a basic or additional award for unfair dismissal, or a redundancy payment.",
+   "quote": "For the purpose of calculating—"
+  },
+  {
+   "requirement": "The weekly pay figure used for calculating the specified awards or payments is capped and must not surpass the statutory limit.",
+   "quote": "the amount of a week’s pay shall not exceed"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Maximum weekly pay cap for specified statutory calculations",
+   "value": "£751",
+   "quote": "shall not exceed £751"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 2,
+  "elements_verified": 2,
+  "thresholds_proposed": 1,
+  "thresholds_verified": 1,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

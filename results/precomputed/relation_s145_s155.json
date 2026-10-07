@@ -1,0 +1,20 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s145|uk/ukpga/1996/18/s155",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s145",
+ "b": "uk/ukpga/1996/18/s155",
+ "basis": [
+  "s155 uses \"relevant date\", defined in s145",
+  "s145 cites section 155"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 155 restricts the right to a redundancy payment to employees who have been continuously employed for at least two years ending with 'the relevant date'. Section 145 defines 'the relevant date' for this purpose according to how and when the contract was terminated. Additionally, section 145(5) modifies this definition for section 155 by extending the relevant date to a later date if statutory notice under section 86 would have expired after the actual date of termination.",
+ "quote_a": "for the purposes of sections 155, 162(1) and 227(3) the later date is the relevant date.",
+ "quote_b": "ending with the relevant date.",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

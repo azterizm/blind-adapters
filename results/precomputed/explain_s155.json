@@ -1,0 +1,31 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s155",
+ "coordinate": "uk/ukpga/1996/18/s155",
+ "kind": "explain",
+ "summary": "This section sets out the qualifying period of service required for an employee to claim a statutory redundancy payment. An employee is excluded from the right to receive a redundancy payment unless they meet the statutory threshold for continuous employment. Specifically, the employee must have accumulated at least two years of continuous service ending with the relevant date.",
+ "elements": [
+  {
+   "requirement": "The individual must have achieved continuous employment for the specified statutory minimum duration.",
+   "quote": "continuously employed for a period of not less than two years"
+  },
+  {
+   "requirement": "The qualifying period of continuous employment must conclude on the statutory relevant date.",
+   "quote": "ending with the relevant date"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Minimum continuous employment required to qualify for a redundancy payment",
+   "value": "not less than two years",
+   "quote": "not less than two years"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 2,
+  "elements_verified": 2,
+  "thresholds_proposed": 1,
+  "thresholds_verified": 1,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

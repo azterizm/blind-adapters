@@ -1,0 +1,68 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s162",
+ "coordinate": "uk/ukpga/1996/18/s162",
+ "kind": "explain",
+ "summary": "This section sets out the statutory method for calculating the amount of an employee's redundancy payment based on their continuous employment ending with the relevant date. The calculation is made by reckoning backwards up to a maximum of twenty years of employment and applying specific multiples of a week's pay depending on the employee's age during each year. It also extends these calculation rules to tribunal awards concerning an employer's liability for whole or partial redundancy payments.",
+ "elements": [
+  {
+   "requirement": "The calculation begins by establishing the period of continuous employment ending on the relevant date.",
+   "quote": "determining the period, ending with the relevant date, during which the employee has been continuously employed"
+  },
+  {
+   "requirement": "Years of employment falling within the continuous period must be counted backwards from the end of the period.",
+   "quote": "reckoning backwards from the end of that period the number of years of employment falling within that period"
+  },
+  {
+   "requirement": "The statutory rate must be allocated for each reckoned year based on the employee's age.",
+   "quote": "allowing the appropriate amount for each of those years of employment"
+  },
+  {
+   "requirement": "Earlier years of employment are excluded once the statutory limit of reckoned years is reached.",
+   "quote": "no account shall be taken under that subsection of any year of employment earlier than those twenty years"
+  },
+  {
+   "requirement": "The calculation rules apply to employment tribunal determinations concerning redundancy payment liability.",
+   "quote": "Subsections (1) to (3) apply for the purposes of any provision of this Part by virtue of which an employment tribunal may determine that an employer is liable to pay to an employee"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Upper age threshold entitlement rate",
+   "value": "one and a half weeks’ pay",
+   "quote": "one and a half weeks’ pay for a year of employment in which the employee was not below the age of forty-one"
+  },
+  {
+   "what": "Upper age limit qualifying age",
+   "value": "41 years of age",
+   "quote": "not below the age of forty-one"
+  },
+  {
+   "what": "Intermediate age threshold entitlement rate",
+   "value": "one week’s pay",
+   "quote": "one week’s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two"
+  },
+  {
+   "what": "Intermediate age limit qualifying age",
+   "value": "22 years of age",
+   "quote": "not below the age of twenty-two"
+  },
+  {
+   "what": "Baseline entitlement rate for years not within higher age categories",
+   "value": "half a week’s pay",
+   "quote": "half a week’s pay for each year of employment not within paragraph (a) or (b)"
+  },
+  {
+   "what": "Maximum cap on years of employment that may be taken into account",
+   "value": "20 years",
+   "quote": "twenty years of employment"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 5,
+  "elements_verified": 5,
+  "thresholds_proposed": 6,
+  "thresholds_verified": 6,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

@@ -1,0 +1,87 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s86",
+ "coordinate": "uk/ukpga/1996/18/s86",
+ "kind": "explain",
+ "summary": "This section sets out the statutory minimum notice periods required from both employers and employees to terminate a contract of employment, calculated according to the employee's length of continuous employment. Contractual provisions for shorter notice are overridden by these statutory minimums, though parties retain the right to waive notice, agree payments in lieu of notice, or dismiss without notice for conduct. Additionally, short fixed-term contracts of one month or less are treated as indefinite contracts once an employee has completed three months of continuous employment.",
+ "elements": [
+  {
+   "requirement": "An employer must give statutory minimum notice to terminate the contract of an employee who satisfies the minimum service threshold.",
+   "quote": "The notice required to be given by an employer to terminate the contract of employment of a person who has been continuously employed for one month or more"
+  },
+  {
+   "requirement": "An employee who meets the minimum service threshold must give statutory minimum notice to terminate their contract of employment.",
+   "quote": "The notice required to be given by an employee who has been continuously employed for one month or more to terminate his contract of employment is not less than one week"
+  },
+  {
+   "requirement": "Any contractual term providing for shorter notice than the statutory minimum is overridden by the statutory requirements.",
+   "quote": "Any provision for shorter notice in any contract of employment with a person who has been continuously employed for one month or more has effect subject to subsections (1) and (2)"
+  },
+  {
+   "requirement": "Parties may lawfully waive notice rights or accept payment in lieu of notice.",
+   "quote": "this section does not prevent either party from waiving his right to notice on any occasion or from accepting a payment in lieu of notice"
+  },
+  {
+   "requirement": "A fixed-term contract of one month or less is converted by statute into an indefinite contract once qualifying service is reached, attracting statutory notice obligations.",
+   "quote": "Any contract of employment of a person who has been continuously employed for three months or more which is a contract for a term certain of one month or less shall have effect as if it were for an indefinite period"
+  },
+  {
+   "requirement": "Statutory notice rules do not impair the common law right to terminate immediately on grounds of conduct.",
+   "quote": "This section does not affect any right of either party to a contract of employment to treat the contract as terminable without notice by reason of the conduct of the other party"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Qualifying period of continuous employment for statutory notice entitlement",
+   "value": "one month or more",
+   "quote": "continuously employed for one month or more"
+  },
+  {
+   "what": "Minimum employer notice where continuous employment is under two years",
+   "value": "not less than one week",
+   "quote": "not less than one week’s notice if his period of continuous employment is less than two years"
+  },
+  {
+   "what": "Continuous employment range where employer notice scales annually",
+   "value": "two years or more but less than twelve years",
+   "quote": "two years or more but less than twelve years"
+  },
+  {
+   "what": "Scale rate of employer notice for service between two and twelve years",
+   "value": "not less than one week for each year",
+   "quote": "not less than one week’s notice for each year of continuous employment"
+  },
+  {
+   "what": "Continuous employment threshold for maximum statutory notice",
+   "value": "twelve years or more",
+   "quote": "twelve years or more"
+  },
+  {
+   "what": "Maximum statutory notice required from an employer",
+   "value": "not less than twelve weeks",
+   "quote": "not less than twelve weeks’ notice"
+  },
+  {
+   "what": "Minimum notice required from an employee",
+   "value": "not less than one week",
+   "quote": "not less than one week"
+  },
+  {
+   "what": "Qualifying period of continuous employment to convert short fixed-term contracts into contracts for an indefinite period",
+   "value": "three months or more",
+   "quote": "continuously employed for three months or more"
+  },
+  {
+   "what": "Fixed-term contract duration subject to conversion to an indefinite period",
+   "value": "one month or less",
+   "quote": "term certain of one month or less"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 6,
+  "elements_verified": 6,
+  "thresholds_proposed": 9,
+  "thresholds_verified": 9,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

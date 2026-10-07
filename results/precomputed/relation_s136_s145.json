@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s136|uk/ukpga/1996/18/s145",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s136",
+ "b": "uk/ukpga/1996/18/s145",
+ "basis": [
+  "s145 cites section 136"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 136 defines when an employee is dismissed, including under subsection (3) where an employee is taken to be dismissed after giving written counter-notice to terminate employment earlier within the obligatory period of notice. Section 145 directly relies on this statutory definition to establish 'the relevant date' for the purposes of redundancy payments. Specifically, section 145(3) provides that where an employee is taken to be dismissed under section 136(3), the relevant date is the date on which the employee's notice expires.",
+ "quote_a": "An employee shall be taken to be dismissed by his employer for the purposes of this Part if",
+ "quote_b": "Where the employee is taken to be dismissed by virtue of section 136(3)",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

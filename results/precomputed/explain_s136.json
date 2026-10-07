@@ -1,0 +1,43 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s136",
+ "coordinate": "uk/ukpga/1996/18/s136",
+ "kind": "explain",
+ "summary": "This section sets out the statutory definition of dismissal for the relevant Part of the Act, establishing that an employee is dismissed if the employer terminates the contract, if a limited-term contract expires without renewal, or if the employee resigns in response to the employer's conduct. It excludes resignations without notice that occur due to an employer lock-out. It also deems an employee dismissed where they give written counter-notice to leave early during the obligatory notice period, or where an act or event affecting the employer terminates the contract by operation of law.",
+ "elements": [
+  {
+   "requirement": "The employment contract is ended by the employer, with or without notice.",
+   "quote": "terminated by the employer (whether with or without notice)"
+  },
+  {
+   "requirement": "A limited term contract ends by its limiting event without renewal under the same contract.",
+   "quote": "terminates by virtue of the limiting event without being renewed under the same contract"
+  },
+  {
+   "requirement": "The employee terminates the contract in circumstances where they are entitled to terminate without notice due to the employer's conduct.",
+   "quote": "entitled to terminate it without notice by reason of the employer’s conduct"
+  },
+  {
+   "requirement": "Constructive dismissal does not apply if the employee terminates without notice due to an employer lock-out.",
+   "quote": "does not apply if the employee terminates the contract without notice in circumstances in which he is entitled to do so by reason of a lock-out by the employer"
+  },
+  {
+   "requirement": "After receiving employer notice, the employee gives written notice within the obligatory notice period to terminate on an earlier date.",
+   "quote": "at a time within the obligatory period of notice the employee gives notice in writing to the employer to terminate the contract of employment on a date earlier than the date on which the employer’s notice is due to expire"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Obligatory period of notice where actual notice equals the minimum required notice",
+   "value": "Equal to the minimum required period",
+   "quote": "equal to the minimum period which (by virtue of any enactment or otherwise) is required to be given by the employer to terminate the contract of employment"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 6,
+  "elements_verified": 5,
+  "thresholds_proposed": 2,
+  "thresholds_verified": 1,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

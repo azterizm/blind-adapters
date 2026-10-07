@@ -1,0 +1,48 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s124",
+ "coordinate": "uk/ukpga/1996/18/s124",
+ "kind": "explain",
+ "summary": "This section limits the compensation or compensatory award that an employment tribunal can award to an individual to a specified maximum cap, calculated as the lower of a fixed sum or 52 weeks' pay. This statutory cap does not apply to certain specified types of unfair dismissal, and it may be exceeded in specific circumstances where awards need to reflect sums payable under reinstatement or re-engagement provisions. The cap is applied to the net award after factoring in any payments already made by the employer and any reductions required by law.",
+ "elements": [
+  {
+   "requirement": "The award must not exceed the lower of the specified statutory amount or 52 weeks of the person's pay.",
+   "quote": "shall not exceed the amount specified in subsection (1ZA)"
+  },
+  {
+   "requirement": "The cap does not apply where the employee is regarded as unfairly dismissed under section 100, 103A, 105(3), or 105(6A).",
+   "quote": "Subsection (1) shall not apply to compensation awarded, or a compensatory award made, to a person in a case where he is regarded as unfairly dismissed by virtue of section 100, 103A, 105(3) or 105(6A)"
+  },
+  {
+   "requirement": "For compensation under section 117(1) and (2), the cap may be exceeded to ensure the award fully reflects amounts specified under section 114(2)(a) or 115(2)(d).",
+   "quote": "the limit imposed by this section may be exceeded to the extent necessary to enable the award fully to reflect the amount specified as payable under section 114(2)(a) or section 115(2)(d)"
+  },
+  {
+   "requirement": "Where compensatory and additional awards are made under section 117(3), the limit on the compensatory award may be exceeded to enable their aggregate to fully reflect amounts payable under section 114(2)(a) or 115(2)(d).",
+   "quote": "the limit imposed by this section on the compensatory award may be exceeded to the extent necessary to enable the aggregate of the compensatory and additional awards fully to reflect the amount specified as payable under section 114(2)(a) or section 115(2)(d)"
+  },
+  {
+   "requirement": "The limit is applied to the award only after deducting payments already made by the respondent and any reductions required by enactment or rule of law.",
+   "quote": "after taking into account— (a) any payment made by the respondent to the complainant in respect of that matter, and (b) any reduction in the amount of the award required by any enactment or rule of law"
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Fixed statutory cap on compensatory awards",
+   "value": "£123,543",
+   "quote": "£123,543"
+  },
+  {
+   "what": "Earnings-based alternative statutory cap",
+   "value": "52 multiplied by a week’s pay",
+   "quote": "52 multiplied by a week’s pay of the person concerned"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 6,
+  "elements_verified": 5,
+  "thresholds_proposed": 2,
+  "thresholds_verified": 2,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

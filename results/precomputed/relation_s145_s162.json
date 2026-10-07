@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s145|uk/ukpga/1996/18/s162",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s145",
+ "b": "uk/ukpga/1996/18/s162",
+ "basis": [
+  "s162 uses \"relevant date\", defined in s145"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 162(1)(a) calculates the amount of a redundancy payment based on the period of continuous employment ending with 'the relevant date'. Section 145 provides the statutory definition of 'the relevant date', expressly stating under subsection (5) when an extended notice date must be treated as the relevant date for the purposes of section 162(1). Practitioners must therefore apply section 145 to determine the exact cut-off date when reckoning an employee's qualifying years of service under section 162.",
+ "quote_a": "for the purposes of sections 155, 162(1) and 227(3) the later date is the relevant date.",
+ "quote_b": "determining the period, ending with the relevant date, during which the employee has been continuously employed",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

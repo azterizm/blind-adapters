@@ -1,0 +1,108 @@
+{
+ "key": "procedure:uk_redundancy_payment",
+ "kind": "procedure",
+ "version": 2,
+ "task": "uk_redundancy_payment",
+ "description": "Advise whether an employee is entitled to a statutory redundancy payment under the Employment Rights Act 1996, and how it is calculated.",
+ "provisions": [
+  "uk/ukpga/1996/18/s135",
+  "uk/ukpga/1996/18/s136",
+  "uk/ukpga/1996/18/s139",
+  "uk/ukpga/1996/18/s145",
+  "uk/ukpga/1996/18/s155",
+  "uk/ukpga/1996/18/s162",
+  "uk/ukpga/1996/18/s227",
+  "uk/ukpga/1996/18/s86"
+ ],
+ "steps": [
+  {
+   "id": "dismissed",
+   "kind": "model",
+   "calc": null,
+   "authority": [
+    "uk/ukpga/1996/18/s135",
+    "uk/ukpga/1996/18/s136"
+   ],
+   "question": "Has the employee been dismissed by the employer within the statutory definition under section 136?",
+   "pitfalls": [
+    "Failing to recognize that an employee giving written counter-notice during the obligatory notice period under section 136(3) is deemed dismissed.",
+    "Treating a resignation as a constructive dismissal where the resignation was due to an employer lock-out, which is expressly excluded.",
+    "Overlooking the non-renewal of a limited-term contract upon the occurrence of its limiting event as a dismissal."
+   ]
+  },
+  {
+   "id": "by_reason_of_redundancy",
+   "kind": "model",
+   "calc": null,
+   "authority": [
+    "uk/ukpga/1996/18/s139"
+   ],
+   "question": "Is the dismissal wholly or mainly attributable to the employer ceasing or intending to cease business (either entirely or where the employee worked) or to diminished requirements for employees to carry out work of a particular kind?",
+   "pitfalls": [
+    "Confusing a dismissal for redundancy with one based on conduct or capability where the underlying business requirement has not ceased or diminished.",
+    "Failing to treat associated employers or local authority maintained school activities as a single business under section 139 when assessing whether requirements have ceased or diminished."
+   ]
+  },
+  {
+   "id": "relevant_date",
+   "kind": "calc",
+   "calc": "relevant_date",
+   "authority": [
+    "uk/ukpga/1996/18/s145",
+    "uk/ukpga/1996/18/s86"
+   ],
+   "question": "Has the statutory relevant date of dismissal been determined, incorporating any extension required by section 86 statutory minimum notice?",
+   "pitfalls": [
+    "Using the actual date of summary dismissal rather than the later date produced by adding section 86 statutory minimum notice under section 145(5) for the purposes of continuous service and calculation.",
+    "Confusing the relevant date for standard notice (expiry of notice) with that of an employee counter-notice under section 136(3) (expiry of the employee's notice)."
+   ]
+  },
+  {
+   "id": "qualifying_service",
+   "kind": "calc",
+   "calc": "red_qualifying",
+   "authority": [
+    "uk/ukpga/1996/18/s155",
+    "uk/ukpga/1996/18/s145",
+    "uk/ukpga/1996/18/s86"
+   ],
+   "question": "Did the employee have at least two years of continuous employment ending with the relevant date?",
+   "pitfalls": [
+    "Calculating service only up to the actual termination date rather than the extended relevant date under sections 145(5) and 86 where statutory minimum notice was not provided.",
+    "Overlooking that employees with less than two years of continuous service ending on the relevant date are statutorily excluded from receiving a redundancy payment under section 155."
+   ]
+  },
+  {
+   "id": "payment_amount",
+   "kind": "calc",
+   "calc": "redundancy_amount",
+   "authority": [
+    "uk/ukpga/1996/18/s162",
+    "uk/ukpga/1996/18/s227"
+   ],
+   "question": "Has the redundancy payment been calculated in accordance with the statutory rules by reckoning backwards up to 20 years of service and applying the weekly pay cap?",
+   "pitfalls": [
+    "Reckoning more than the statutory maximum of 20 years of continuous employment.",
+    "Failing to cap the week's pay at the statutory limit of £751 under section 227.",
+    "Applying the employee's age at dismissal across all years rather than adjusting the rate for each year reckoned backwards according to the employee's age during that year."
+   ]
+  }
+ ],
+ "fact_notes": {
+  "start_date": "The date on which the employee's continuous period of employment began; critical for calculating continuous service under section 155 and section 162.",
+  "termination_date": "The date on which employment terminates; must be distinguished from the statutory relevant date where section 145(5) applies statutory minimum notice extensions.",
+  "notice_given": "Whether statutory or contractual notice of termination was given by the employer or the employee; determines which subsection of section 145 defines the relevant date.",
+  "notice_given_date": "The date notice was communicated; required to determine the obligatory notice period, counter-notice validity under section 136(3), and minimum notice compliance under section 86.",
+  "advice_date": "The date of assessing liability and advising the client, used as the benchmark date to evaluate whether requirements have been met.",
+  "claim_presented_date": "The date any claim was brought before an employment tribunal regarding redundancy payment liability under section 162.",
+  "annual_pay": "The employee's total annual gross earnings; used to calculate the figure for a week's pay before applying statutory caps.",
+  "weekly_pay": "The employee's gross pay for a week; must be capped at £751 pursuant to section 227 when calculating the statutory redundancy payment.",
+  "age": "The employee's age during each reckoned year of continuous service; determines the multiple of a week's pay allocated under section 162 when counting backwards from the relevant date."
+ },
+ "audit": {
+  "steps_written": 5,
+  "steps_expected": 5,
+  "fact_notes": 9
+ },
+ "model": "gemini-3.8-flash-high"
+}

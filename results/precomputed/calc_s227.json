@@ -1,0 +1,18 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s227",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s227",
+ "params": {
+  "week_pay_limit_gbp": {
+   "value": 751.0,
+   "quote": "(c) a redundancy payment,\n  the amount of a week’s pay shall not exceed £751."
+  }
+ },
+ "audit": {
+  "proposed": 1,
+  "verified": 1,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

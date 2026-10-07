@@ -1,0 +1,97 @@
+{
+ "key": "procedure:uk_redundancy_payment",
+ "kind": "procedure",
+ "task": "uk_redundancy_payment",
+ "description": "Advise whether an employee is entitled to a statutory redundancy payment under the Employment Rights Act 1996, and how it is calculated.",
+ "provisions": [
+  "uk/ukpga/1996/18/s135",
+  "uk/ukpga/1996/18/s136",
+  "uk/ukpga/1996/18/s139",
+  "uk/ukpga/1996/18/s145",
+  "uk/ukpga/1996/18/s155",
+  "uk/ukpga/1996/18/s162"
+ ],
+ "steps": [
+  {
+   "id": "dismissal_or_qualification",
+   "question": "Was the employee dismissed by their employer within the statutory definition, or are they eligible for a redundancy payment due to lay-off or short-time?",
+   "authority": [
+    "uk/ukpga/1996/18/s135",
+    "uk/ukpga/1996/18/s136"
+   ],
+   "facts_needed": [
+    "Whether the employer terminated the employment contract with or without notice",
+    "Whether a limited-term contract ended by virtue of its limiting event without renewal",
+    "Whether the employee resigned in circumstances entitling them to terminate without notice due to the employer's conduct (not involving an employer lock-out)",
+    "Whether the employee gave written counter-notice to terminate earlier during an obligatory notice period",
+    "Whether the claim arises from being laid off or kept on short-time"
+   ],
+   "if_not_met": "The employee has not been dismissed and does not qualify under statutory lay-off or short-time rules; no statutory redundancy payment is due under section 135."
+  },
+  {
+   "id": "redundancy_reason",
+   "question": "Was the employee's dismissal wholly or mainly attributable to the employer ceasing or intending to cease business, or to a cessation or diminution of the requirements for employees to carry out work of a particular kind?",
+   "authority": [
+    "uk/ukpga/1996/18/s135",
+    "uk/ukpga/1996/18/s139"
+   ],
+   "facts_needed": [
+    "The reason or principal reason for the dismissal",
+    "Whether the employer has ceased or intends to cease business entirely or at the employee's place of employment",
+    "Whether the requirements for employees to perform work of a particular kind (or at the specific workplace) have ceased, diminished, or are expected to do so",
+    "Whether activities of associated employers or maintained school governing bodies affect the single-business assessment"
+   ],
+   "if_not_met": "The dismissal is not by reason of redundancy under section 139, and the employee is not entitled to a statutory redundancy payment."
+  },
+  {
+   "id": "relevant_date_determination",
+   "question": "Can the statutory relevant date of termination be established, including any extension where statutory minimum notice would expire after the standard termination date?",
+   "authority": [
+    "uk/ukpga/1996/18/s145"
+   ],
+   "facts_needed": [
+    "Date of expiry of any notice given by the employer or employee",
+    "Date on which termination took effect if employment ended without notice",
+    "Date of termination of a limited-term contract without renewal",
+    "Date of expiry of counter-notice given under section 136(3)",
+    "Whether statutory minimum notice under section 86 would have expired later than the standard termination date"
+   ],
+   "if_not_met": "The statutory relevant date cannot be ascertained, preventing the determination of qualifying service and payment calculation."
+  },
+  {
+   "id": "qualifying_period_of_service",
+   "question": "Did the employee have at least two years of continuous employment ending with the relevant date?",
+   "authority": [
+    "uk/ukpga/1996/18/s145",
+    "uk/ukpga/1996/18/s155"
+   ],
+   "facts_needed": [
+    "Start date of continuous employment",
+    "The statutory relevant date of termination",
+    "Total period of continuous employment concluding on the relevant date"
+   ],
+   "if_not_met": "The employee does not satisfy the qualifying period threshold under section 155 and is excluded from the right to receive a statutory redundancy payment."
+  },
+  {
+   "id": "statutory_calculation",
+   "question": "Is the amount of the redundancy payment calculated by reckoning backwards from the relevant date up to 20 years of continuous service and applying the prescribed statutory rates based on the employee's age during each year to a week's pay?",
+   "authority": [
+    "uk/ukpga/1996/18/s145",
+    "uk/ukpga/1996/18/s162"
+   ],
+   "facts_needed": [
+    "The full duration of continuous employment ending on the relevant date",
+    "Years of continuous employment counted backwards from the relevant date, capped at a maximum of 20 years",
+    "The employee's age in each reckoned year of service to allocate the appropriate statutory multiplier",
+    "The employee's calculated week's pay"
+   ],
+   "if_not_met": "The calculation does not comply with the statutory formula in section 162 and must be recalculated accordingly."
+  }
+ ],
+ "audit": {
+  "steps_proposed": 5,
+  "steps_kept": 5,
+  "dropped_unauthorised": 0
+ },
+ "model": "gemini-3.8-flash-high"
+}

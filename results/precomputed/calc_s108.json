@@ -1,0 +1,18 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s108",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s108",
+ "params": {
+  "qualifying_years": {
+   "value": 2.0,
+   "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination"
+  }
+ },
+ "audit": {
+  "proposed": 1,
+  "verified": 1,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

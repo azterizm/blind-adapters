@@ -1,0 +1,20 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s123|uk/ukpga/1996/18/s124",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s123",
+ "b": "uk/ukpga/1996/18/s124",
+ "basis": [
+  "s123 cites section 124",
+  "s124 cites section 123"
+ ],
+ "relation": "limits",
+ "analysis": "Section 123 sets out the principles for calculating a compensatory award based on what the tribunal considers just and equitable in respect of the complainant's loss, but expressly makes this assessment subject to section 124. Section 124(1) imposes an upper statutory ceiling on any compensatory award calculated under section 123, restricting it to the lower of £123,543 or 52 weeks' pay unless specific exceptions apply. Pursuant to section 124(5), this statutory cap is applied only after taking into account any payments made by the respondent and any reductions required by law.",
+ "quote_a": "Subject to the provisions of this section and sections 124",
+ "quote_b": "a compensatory award to a person calculated in accordance with section 123",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

@@ -1,0 +1,20 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s86|uk/ukpga/1996/18/s97",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s86",
+ "b": "uk/ukpga/1996/18/s97",
+ "basis": [
+  "s97 cites section 86",
+  "s97 cites section 86"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Under section 97(2) and (4), the statutory effective date of termination is adjusted for the purposes of sections 108(1), 119(1) and 227(3) by incorporating the statutory notice periods established in section 86. Where the contract is terminated by the employer, or by the employee under the conditions in section 97(4), and the notice required by section 86 would expire on a date later than the effective date of termination defined in section 97(1), that later date is deemed the effective date of termination. Thus, section 97 relies directly on the statutory notice obligations defined in section 86 to calculate this extended date.",
+ "quote_a": "notice required to be given by an employer",
+ "quote_b": "notice required by section 86 to be given by an employer",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

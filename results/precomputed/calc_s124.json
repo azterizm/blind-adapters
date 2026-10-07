@@ -1,0 +1,22 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s124",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s124",
+ "params": {
+  "cap_fixed_gbp": {
+   "value": 123543.0,
+   "quote": "The amount specified in this subsection is the lower of—\n    (a) £123,543,"
+  },
+  "cap_weeks": {
+   "value": 52.0,
+   "quote": "is the lower of—\n    (a) £123,543, and\n    (b) 52 multiplied by a week’s pay of the person concerned."
+  }
+ },
+ "audit": {
+  "proposed": 2,
+  "verified": 2,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

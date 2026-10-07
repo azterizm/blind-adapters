@@ -1,0 +1,18 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s111",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s111",
+ "params": {
+  "time_limit_months": {
+   "value": 3.0,
+   "quote": "before the end of the period of three months beginning with the effective date of termination,"
+  }
+ },
+ "audit": {
+  "proposed": 1,
+  "verified": 1,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

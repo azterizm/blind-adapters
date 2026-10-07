@@ -1,0 +1,43 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s111",
+ "coordinate": "uk/ukpga/1996/18/s111",
+ "kind": "explain",
+ "summary": "This section permits a person to present a complaint of unfair dismissal against their employer to an employment tribunal, including before the dismissal takes effect if notice has been given. A complaint must generally be brought within three months of the effective date of termination, subject to extensions for pre-proceedings conciliation or where it was not reasonably practicable to submit it in time. For dismissals related to blacklists under section 104F, late claims may instead be considered where the tribunal finds it just and equitable to do so.",
+ "elements": [
+  {
+   "requirement": "A person must present a complaint of unfair dismissal against an employer to an employment tribunal.",
+   "quote": "A complaint may be presented to an employment tribunal against an employer by any person that he was unfairly dismissed by the employer."
+  },
+  {
+   "requirement": "The complaint must be presented within the primary time limit, subject to statutory conciliation extensions.",
+   "quote": "before the end of the period of three months beginning with the effective date of termination"
+  },
+  {
+   "requirement": "If presented outside the primary period, the tribunal must be satisfied it was not reasonably practicable to submit the complaint in time, and it must be submitted within a further reasonable period.",
+   "quote": "within such further period as the tribunal considers reasonable in a case where it is satisfied that it was not reasonably practicable for the complaint to be presented before the end of that period of three months."
+  },
+  {
+   "requirement": "Where dismissal is with notice, the complaint may be presented during the notice period prior to termination.",
+   "quote": "presented after the notice is given but before the effective date of termination."
+  },
+  {
+   "requirement": "Where dismissal is alleged to be unfair by virtue of section 104F (blacklists), an out-of-time complaint may be considered if deemed fair by the tribunal.",
+   "quote": "in all the circumstances of the case, it considers that it is just and equitable to do so."
+  }
+ ],
+ "thresholds": [
+  {
+   "what": "Primary limitation period for presenting an unfair dismissal complaint",
+   "value": "3 months",
+   "quote": "period of three months beginning with the effective date of termination"
+  }
+ ],
+ "audit": {
+  "elements_proposed": 5,
+  "elements_verified": 5,
+  "thresholds_proposed": 1,
+  "thresholds_verified": 1,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

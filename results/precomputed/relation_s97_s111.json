@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s97|uk/ukpga/1996/18/s111",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s97",
+ "b": "uk/ukpga/1996/18/s111",
+ "basis": [
+  "s111 uses \"effective date of termination\", defined in s97"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 97 defines 'the effective date of termination' across the relevant Part, determining the date based on when notice expires, when termination takes effect without notice, or when a limited-term contract terminates. Section 111 directly utilizes this definition to set the primary jurisdictional time limit, stipulating that an unfair dismissal complaint must generally be presented within three months beginning with the effective date of termination. In addition, section 111 permits a complaint to be brought before that effective date of termination where dismissal is with notice, modifying statutory references to correspond with notice expiry.",
+ "quote_a": "the effective date of termination",
+ "quote_b": "the effective date of termination",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

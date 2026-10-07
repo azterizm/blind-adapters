@@ -1,0 +1,45 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s145",
+ "coordinate": "uk/ukpga/1996/18/s145",
+ "kind": "explain",
+ "summary": "This section defines the 'relevant date' of dismissal for statutory redundancy payment purposes across various termination scenarios. It establishes standard effective dates depending on whether employment ends with notice, without notice, by the expiry of a limited-term contract, or following statutory trial periods. Furthermore, it provides an extension mechanism for specific redundancy calculations if statutory minimum notice was not given.",
+ "elements": [
+  {
+   "requirement": "Where a contract of employment is terminated by notice (whether given by employer or employee), the relevant date is the date the notice expires.",
+   "quote": "the date on which the notice expires"
+  },
+  {
+   "requirement": "Where a contract of employment is terminated without notice, the relevant date is the date the termination takes effect.",
+   "quote": "the date on which the termination takes effect"
+  },
+  {
+   "requirement": "Where an employee is employed under a limited-term contract terminating by virtue of the limiting event without renewal under the same contract, the relevant date is the date the termination takes effect.",
+   "quote": "means the date on which the termination takes effect"
+  },
+  {
+   "requirement": "Where the employee is treated as dismissed under section 136(3), the relevant date is the date their notice to terminate expires.",
+   "quote": "the date on which the employee’s notice to terminate his contract of employment expires"
+  },
+  {
+   "requirement": "Where an employee is treated under section 138(4) as dismissed when an earlier contract ended, for the purposes of section 164(1) the relevant date is based on the renewed or new contract (or the last such contract if there was more than one trial period).",
+   "quote": "the date which is the relevant date as defined by subsection (2) in relation to the renewed or new contract"
+  },
+  {
+   "requirement": "Where an employee is treated under section 138(4) as dismissed when an earlier contract ended, for any provision other than section 164(1) the relevant date is based on the previous contract (or the original contract if there was more than one trial period).",
+   "quote": "the date which is the relevant date as defined by subsection (2) in relation to the previous contract"
+  },
+  {
+   "requirement": "Where the contract is terminated by the employer and minimum notice under section 86 given on the material date would expire later than the standard relevant date, that later date serves as the relevant date for sections 155, 162(1), and 227(3).",
+   "quote": "for the purposes of sections 155, 162(1) and 227(3) the later date is the relevant date"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 8,
+  "elements_verified": 7,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

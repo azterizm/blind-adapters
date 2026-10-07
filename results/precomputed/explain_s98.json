@@ -1,0 +1,33 @@
+{
+ "key": "explain:uk/ukpga/1996/18/s98",
+ "coordinate": "uk/ukpga/1996/18/s98",
+ "kind": "explain",
+ "summary": "This section sets out the two-stage test for deciding whether an employee's dismissal is fair or unfair. First, the employer must establish the principal reason for the dismissal and demonstrate that it falls within a prescribed statutory category or is another substantial reason justifying dismissal. If that is shown, the determination of fairness depends on whether the employer acted reasonably or unreasonably in treating that reason as sufficient to dismiss, judged against equity and the substantial merits of the case.",
+ "elements": [
+  {
+   "requirement": "The employer must establish the reason (or principal reason if there are multiple reasons) for dismissing the employee.",
+   "quote": "the reason (or, if more than one, the principal reason) for the dismissal"
+  },
+  {
+   "requirement": "The employer must show that the reason falls within one of the statutory categories (capability, conduct, redundancy, or statutory restriction) or is another substantial reason justifying dismissal.",
+   "quote": "either a reason falling within subsection (2) or some other substantial reason of a kind such as to justify the dismissal of an employee holding the position which the employee held"
+  },
+  {
+   "requirement": "The tribunal must evaluate whether the employer acted reasonably or unreasonably in treating the reason as sufficient for dismissal, considering the employer's size and administrative resources.",
+   "quote": "whether in the circumstances (including the size and administrative resources of the employer’s undertaking) the employer acted reasonably or unreasonably in treating it as a sufficient reason for dismissing the employee"
+  },
+  {
+   "requirement": "The determination of whether the dismissal was fair or unfair must be made in accordance with equity and the substantive merits of the matter.",
+   "quote": "determined in accordance with equity and the substantial merits of the case"
+  }
+ ],
+ "thresholds": [],
+ "audit": {
+  "elements_proposed": 4,
+  "elements_verified": 4,
+  "thresholds_proposed": 0,
+  "thresholds_verified": 0,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

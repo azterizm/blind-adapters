@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s86|uk/ukpga/1996/18/s145",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s86",
+ "b": "uk/ukpga/1996/18/s145",
+ "basis": [
+  "s145 cites section 86"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 145 sets out the meaning of 'the relevant date' for redundancy payment provisions under the Act. Under section 145(5), where an employer terminates an employee's contract of employment, the relevant date is adjusted by reference to 'the notice required by section 86 to be given by an employer'. If that statutory notice under section 86 would have expired on a later date had it been given on the material date, that later date becomes the relevant date for the purposes of sections 155, 162(1), and 227(3).",
+ "quote_a": "The notice required to be given by an employer",
+ "quote_b": "the notice required by section 86 to be given by an employer",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

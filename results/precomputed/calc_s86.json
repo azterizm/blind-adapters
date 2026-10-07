@@ -1,0 +1,26 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s86",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s86",
+ "params": {
+  "notice_weeks_under_2y": {
+   "value": 1.0,
+   "quote": "is not less than one week’s notice if his period of continuous employment is less than two years"
+  },
+  "notice_weeks_per_year": {
+   "value": 1.0,
+   "quote": "is not less than one week’s notice for each year of continuous employment if his period of continuous employment is two years or more"
+  },
+  "notice_weeks_max": {
+   "value": 12.0,
+   "quote": "is not less than twelve weeks’ notice if his period of continuous employment is twelve years or more"
+  }
+ },
+ "audit": {
+  "proposed": 3,
+  "verified": 3,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

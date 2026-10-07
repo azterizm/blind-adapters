@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s135|uk/ukpga/1996/18/s139",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s135",
+ "b": "uk/ukpga/1996/18/s139",
+ "basis": [
+  "s135 uses \"by reason of redundancy\", defined in s139"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 135(1)(a) confers the statutory entitlement to a redundancy payment where an employee is dismissed by their employer 'by reason of redundancy'. Section 139 directly supplies the substantive statutory test for this trigger, establishing when an employee 'shall be taken to be dismissed by reason of redundancy' by reference to business closure, workplace closure, or a cessation or diminution in requirements for employees to carry out work of a particular kind. Consequently, a practitioner establishing liability under section 135(1)(a) must satisfy the statutory definition set out in section 139.",
+ "quote_a": "dismissed by the employer by reason of redundancy",
+ "quote_b": "dismissed by reason of redundancy",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

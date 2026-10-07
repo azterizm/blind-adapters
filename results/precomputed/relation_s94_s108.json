@@ -1,0 +1,20 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s94|uk/ukpga/1996/18/s108",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s94",
+ "b": "uk/ukpga/1996/18/s108",
+ "basis": [
+  "s94 cites section 108",
+  "s108 cites section 94"
+ ],
+ "relation": "precondition",
+ "analysis": "Section 94(1) establishes an employee's statutory right not to be unfairly dismissed, but section 94(2) makes this right expressly subject to section 108. Section 108(1) creates a qualifying precondition, providing that section 94 does not apply unless the employee has been continuously employed for at least two years ending with the effective date of termination. An employee must satisfy this period of continuous service (or fall within the specific exceptions set out in section 108(2) to (5)) to trigger the protection under section 94.",
+ "quote_a": "in particular sections 108 to 110",
+ "quote_b": "Section 94 does not apply to the dismissal of an employee unless",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

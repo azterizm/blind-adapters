@@ -1,0 +1,19 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s136|uk/ukpga/1996/18/s139",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s136",
+ "b": "uk/ukpga/1996/18/s139",
+ "basis": [
+  "s139 cites section 136"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 136 defines the statutory conditions under which an employee is dismissed by their employer, providing the foundational definition of dismissal required to establish redundancy under section 139(1). In addition, section 139(4) expressly incorporates the specific termination scenario defined in section 136(5), where an act or event operates to terminate an employment contract. Where an employee's contract is so terminated under section 136(5) and is not renewed or re-engaged, section 139 applies its redundancy criteria to that deemed termination.",
+ "quote_a": "the act or event shall be taken for the purposes of this Part to be a termination of the contract by the employer",
+ "quote_b": "treated by section 136(5) as terminated by his employer by reason of an act or event",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

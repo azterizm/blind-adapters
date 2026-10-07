@@ -1,0 +1,31 @@
+{
+  "_written": "2026-10-06, before any final-round code was run",
+  "_rule": {
+    "task_selection": "8/8 held-out matters routed to the right task, or refused",
+    "calculator_fields": "100% correct (qualifying_service, time_limit, compensation_cap, relevant_date, payment_amount)",
+    "model_judged_fields": ">= 90% correct (dismissed, by_reason_of_redundancy)",
+    "wrong_but_grounded": "0 wrong answers that passed the grounding gate",
+    "security": "identical PIR query count for every matter, 0 secrets reach the cloud, 0 cloud-LLM calls during matters",
+    "not_scored": "fairness (s98) is a judgment call; reported, not scored"
+  },
+  "_conventions": {
+    "time_limit": "true = the claim is (or is still) within the s111(2)(a) primary limit at the advice date; deadline = EDT + 3 months - 1 day",
+    "qualifying_service": "s108(1) two years ending with the EDT, where s97(2) extends the EDT by s86 notice the employer did not give",
+    "compensation_cap": "s124(1ZA): lower of the fixed sum and 52 x uncapped week's pay (week's pay = annual / 52)",
+    "payment_amount": "s162 with s227 week's-pay cap; relevant date extended under s145(5); age at the start of each year counted back = stated age - 1 - k"
+  },
+  "held_out": {
+    "UD-A": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "yes", "time_limit": "yes", "compensation_cap": 41600},
+    "UD-B": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "yes", "time_limit": "yes", "compensation_cap": 34320},
+    "UD-C": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "no", "time_limit": "yes", "compensation_cap": 39000},
+    "UD-D": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "yes", "time_limit": "no", "compensation_cap": 45500},
+    "UD-E": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "yes", "time_limit": "yes", "compensation_cap": 123543},
+    "R-A": {"task": "uk_redundancy_payment", "dismissed": "yes", "by_reason_of_redundancy": "yes", "qualifying_service": "yes", "relevant_date": "2026-07-31", "payment_amount": 3000},
+    "R-B": {"task": "uk_redundancy_payment", "dismissed": "yes", "by_reason_of_redundancy": "yes", "qualifying_service": "no", "relevant_date": "2026-08-14", "payment_amount": 0},
+    "OOS": {"task": null}
+  },
+  "dev": {
+    "dismissal": {"task": "uk_unfair_dismissal", "dismissed": "yes", "qualifying_service": "yes", "time_limit": "yes", "compensation_cap": 48500},
+    "redundancy": {"task": "uk_redundancy_payment", "dismissed": "yes", "by_reason_of_redundancy": "yes", "qualifying_service": "yes", "relevant_date": "2026-05-29", "payment_amount": 6405}
+  }
+}

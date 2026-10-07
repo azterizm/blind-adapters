@@ -1,0 +1,96 @@
+{
+ "key": "procedure:uk_unfair_dismissal",
+ "kind": "procedure",
+ "task": "uk_unfair_dismissal",
+ "description": "Advise whether an employee has a viable ordinary unfair-dismissal claim under the Employment Rights Act 1996 (eligibility, fairness, time limit, compensation).",
+ "provisions": [
+  "uk/ukpga/1996/18/s108",
+  "uk/ukpga/1996/18/s111",
+  "uk/ukpga/1996/18/s123",
+  "uk/ukpga/1996/18/s124",
+  "uk/ukpga/1996/18/s94",
+  "uk/ukpga/1996/18/s95",
+  "uk/ukpga/1996/18/s97",
+  "uk/ukpga/1996/18/s98"
+ ],
+ "steps": [
+  {
+   "id": "employee_status_and_dismissal",
+   "question": "Is the individual an employee who has been dismissed by their employer within the meaning of section 95?",
+   "authority": [
+    "uk/ukpga/1996/18/s94",
+    "uk/ukpga/1996/18/s95",
+    "uk/ukpga/1996/18/s97"
+   ],
+   "facts_needed": [
+    "The employment status of the claimant as an employee",
+    "Whether the employer terminated the contract (with or without notice), a limited-term contract expired without renewal, or the employee resigned in response to the employer's conduct",
+    "The effective date of termination as defined under section 97"
+   ],
+   "if_not_met": "The individual has no statutory right under section 94 to claim unfair dismissal in the absence of an employment relationship or a dismissal."
+  },
+  {
+   "id": "qualifying_period",
+   "question": "Does the employee have the requisite period of continuous employment to qualify for unfair dismissal protection?",
+   "authority": [
+    "uk/ukpga/1996/18/s97",
+    "uk/ukpga/1996/18/s108"
+   ],
+   "facts_needed": [
+    "Length of continuous employment calculated up to the effective date of termination (including any extension under section 97 for statutory notice under section 86)",
+    "Whether the employee has at least two years of continuous service",
+    "Whether a statutory disapplication or reduction of the qualifying period applies (e.g., suspension under section 64(2), political opinion or affiliation, or reserve force membership)"
+   ],
+   "if_not_met": "The employee is excluded under section 108(1) from bringing an ordinary unfair dismissal claim."
+  },
+  {
+   "id": "limitation_period",
+   "question": "Was the complaint presented to an employment tribunal within three months of the effective date of termination (or within an allowable extended period)?",
+   "authority": [
+    "uk/ukpga/1996/18/s97",
+    "uk/ukpga/1996/18/s111"
+   ],
+   "facts_needed": [
+    "The effective date of termination",
+    "The date the complaint was presented to the employment tribunal",
+    "Whether pre-proceedings conciliation statutory extensions apply",
+    "If presented out of time, whether it was not reasonably practicable to present the complaint within the primary period and whether it was presented within a reasonable time thereafter"
+   ],
+   "if_not_met": "The tribunal will lack jurisdiction to hear the complaint under section 111."
+  },
+  {
+   "id": "fairness_of_dismissal",
+   "question": "Did the employer fail to establish a potentially fair reason for the dismissal, or act unreasonably in treating that reason as sufficient to dismiss?",
+   "authority": [
+    "uk/ukpga/1996/18/s98"
+   ],
+   "facts_needed": [
+    "The principal reason shown by the employer for the dismissal (capability, conduct, redundancy, statutory restriction, or some other substantial reason)",
+    "Whether the employer acted reasonably or unreasonably in treating that reason as sufficient, having regard to its size and administrative resources",
+    "Equity and the substantial merits of the case"
+   ],
+   "if_not_met": "The dismissal is fair under section 98, and the claim for unfair dismissal will fail."
+  },
+  {
+   "id": "compensatory_award_viability",
+   "question": "Has the employee suffered financial loss attributable to the dismissal that is recoverable as a compensatory award?",
+   "authority": [
+    "uk/ukpga/1996/18/s123",
+    "uk/ukpga/1996/18/s124"
+   ],
+   "facts_needed": [
+    "Expenses and benefits lost as a result of the dismissal attributable to the employer's conduct",
+    "Steps taken by the employee to mitigate their loss",
+    "Whether the employee's conduct caused or contributed to the dismissal justifying a reduction",
+    "The employee's 52 weeks of pay and the applicable statutory maximum cap under section 124"
+   ],
+   "if_not_met": "The employee will not be entitled to a compensatory award under section 123, or any compensatory award will be reduced to zero."
+  }
+ ],
+ "audit": {
+  "steps_proposed": 5,
+  "steps_kept": 5,
+  "dropped_unauthorised": 0
+ },
+ "model": "gemini-3.8-flash-high"
+}

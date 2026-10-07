@@ -1,0 +1,21 @@
+{
+ "key": "relation:uk/ukpga/1996/18/s97|uk/ukpga/1996/18/s108",
+ "kind": "relation",
+ "a": "uk/ukpga/1996/18/s97",
+ "b": "uk/ukpga/1996/18/s108",
+ "basis": [
+  "s97 cites section 108",
+  "s97 cites section 108",
+  "s108 uses \"effective date of termination\", defined in s97"
+ ],
+ "relation": "defines_term_used_by",
+ "analysis": "Section 108(1) establishes that unfair dismissal protection under section 94 requires an employee to have completed at least two years of continuous employment ending with the 'effective date of termination'. Section 97 defines this term and specifically provides in subsections (2) and (4) that statutory minimum notice under section 86 must be added to extend the effective date of termination for the purposes of section 108(1). Practitioners evaluating whether a claimant meets the qualifying service threshold must therefore apply section 97 to determine the relevant terminal date.",
+ "quote_a": "for the purposes of sections 108(1), 119(1) and 227(3) the later date is the effective date of termination.",
+ "quote_b": "ending with the effective date of termination.",
+ "audit": {
+  "quote_a_verified": true,
+  "quote_b_verified": true,
+  "prose": "model-written (not quote-verifiable)"
+ },
+ "model": "gemini-3.8-flash-high"
+}

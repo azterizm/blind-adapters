@@ -1,0 +1,38 @@
+{
+ "key": "calc:uk/ukpga/1996/18/s162",
+ "kind": "calc",
+ "coordinate": "uk/ukpga/1996/18/s162",
+ "params": {
+  "rate_upper_weeks": {
+   "value": 1.5,
+   "quote": "one and a half weeks’ pay for a year of employment in which the employee was not below the age of forty-one"
+  },
+  "age_upper": {
+   "value": 41.0,
+   "quote": "one and a half weeks’ pay for a year of employment in which the employee was not below the age of forty-one"
+  },
+  "rate_middle_weeks": {
+   "value": 1.0,
+   "quote": "one week’s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two"
+  },
+  "age_lower": {
+   "value": 22.0,
+   "quote": "one week’s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two"
+  },
+  "rate_lower_weeks": {
+   "value": 0.5,
+   "quote": "half a week’s pay for each year of employment not within paragraph (a) or (b)"
+  },
+  "max_years": {
+   "value": 20.0,
+   "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection"
+  }
+ },
+ "audit": {
+  "proposed": 6,
+  "verified": 6,
+  "missing": [],
+  "rejected": []
+ },
+ "model": "gemini-3.8-flash-high"
+}

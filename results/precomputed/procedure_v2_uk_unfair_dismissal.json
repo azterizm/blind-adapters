@@ -1,0 +1,113 @@
+{
+ "key": "procedure:uk_unfair_dismissal",
+ "kind": "procedure",
+ "version": 2,
+ "task": "uk_unfair_dismissal",
+ "description": "Advise whether an employee has a viable ordinary unfair-dismissal claim under the Employment Rights Act 1996 (eligibility, fairness, time limit, compensation).",
+ "provisions": [
+  "uk/ukpga/1996/18/s108",
+  "uk/ukpga/1996/18/s111",
+  "uk/ukpga/1996/18/s123",
+  "uk/ukpga/1996/18/s124",
+  "uk/ukpga/1996/18/s86",
+  "uk/ukpga/1996/18/s94",
+  "uk/ukpga/1996/18/s95",
+  "uk/ukpga/1996/18/s97",
+  "uk/ukpga/1996/18/s98"
+ ],
+ "steps": [
+  {
+   "id": "dismissed",
+   "kind": "model",
+   "calc": null,
+   "authority": [
+    "uk/ukpga/1996/18/s95",
+    "uk/ukpga/1996/18/s97"
+   ],
+   "question": "Has the employee been dismissed by the employer within the statutory meaning of section 95 (taking into account the effective date of termination under section 97)?",
+   "pitfalls": [
+    "Failing to recognize constructive dismissal where the employee resigns in response to employer conduct under section 95(1)(c).",
+    "Overlooking situations where the expiry and non-renewal of a limited-term contract constitutes dismissal under section 95(1)(b).",
+    "Confusing a resignation or mutual agreement without terminating employer conduct with an employer dismissal.",
+    "Misidentifying the effective date of termination when notice has been given or when counter-notice was served by the employee under section 95(2)."
+   ]
+  },
+  {
+   "id": "qualifying_service",
+   "kind": "calc",
+   "calc": "ud_qualifying",
+   "authority": [
+    "uk/ukpga/1996/18/s108",
+    "uk/ukpga/1996/18/s97",
+    "uk/ukpga/1996/18/s86"
+   ],
+   "question": "Does the employee satisfy the continuous employment qualifying period required under section 108 (normally two years), including any statutory extension of the effective date of termination under section 97 read with section 86?",
+   "pitfalls": [
+    "Calculating service strictly to the actual departure date without adding the statutory minimum notice required by section 86 via the extension provisions in section 97(2) or (4).",
+    "Failing to check whether any specific statutory exceptions or disapplications to the qualifying period in section 108 apply (such as political grounds or reserve force status).",
+    "Applying the one-month qualifying threshold under section 108(2) to general dismissals rather than dismissals relating to medical or regulatory suspensions under section 64(2)."
+   ]
+  },
+  {
+   "id": "time_limit",
+   "kind": "calc",
+   "calc": "time_limit",
+   "authority": [
+    "uk/ukpga/1996/18/s111",
+    "uk/ukpga/1996/18/s97"
+   ],
+   "question": "Has the tribunal complaint been presented—or can it still be presented—within three months of the effective date of termination under section 111 (subject to statutory extensions or reasonable practicability)?",
+   "pitfalls": [
+    "Calculating the primary three-month deadline from the hypothetical extended notice date rather than the actual effective date of termination under section 97(1).",
+    "Assuming a claim cannot be presented during the notice period prior to the dismissal taking effect, contrary to section 111(3).",
+    "Failing to account for statutory conciliation extensions or the strict test for establishing whether it was not reasonably practicable to present the claim in time under section 111(2)(b)."
+   ]
+  },
+  {
+   "id": "fairness",
+   "kind": "model",
+   "calc": null,
+   "authority": [
+    "uk/ukpga/1996/18/s98"
+   ],
+   "question": "Is the dismissal unfair under section 98, because the employer cannot demonstrate a potentially fair statutory reason or because the employer acted unreasonably in treating that reason as sufficient to dismiss?",
+   "pitfalls": [
+    "Failing to separate the two stages of section 98: first establishing the reason (capability, conduct, redundancy, statutory restriction, or some other substantial reason), and second determining reasonableness under section 98(4).",
+    "Ignoring the employer's size and administrative resources when evaluating whether the employer acted reasonably.",
+    "Overlooking whether the determination of fairness was made in accordance with equity and the substantial merits of the case."
+   ]
+  },
+  {
+   "id": "compensation_cap",
+   "kind": "calc",
+   "calc": "compensation_cap",
+   "authority": [
+    "uk/ukpga/1996/18/s123",
+    "uk/ukpga/1996/18/s124"
+   ],
+   "question": "Is the employee entitled to a compensatory award under section 123, subject to the applicable statutory cap and calculation rules under section 124?",
+   "pitfalls": [
+    "Failing to cap the compensatory award at the lower of the statutory fixed amount and 52 weeks' pay under section 124(1ZA).",
+    "Neglecting statutory deductions for failure to mitigate losses, contributory conduct, or payments already made by the employer before applying the cap.",
+    "Applying the statutory cap to dismissals where the cap is disapplied under section 124(1A) (e.g., sections 100 or 103A)."
+   ]
+  }
+ ],
+ "fact_notes": {
+  "start_date": "The date on which the employee began their period of continuous employment. Pitfall: Confusing initial engagement under non-employment arrangements with the start of employment under a contract of employment.",
+  "termination_date": "The standard date on which the employment contract ends (e.g., when notice expires, when summary dismissal takes effect, or when a limited-term contract ends). Pitfall: Conflating the contractual termination date with the statutory effective date of termination extended by section 97 for qualifying service calculations.",
+  "notice_given": "Whether notice to terminate the contract of employment was served by the employer or the employee. Pitfall: Treating payment in lieu of notice as dismissal with notice rather than summary dismissal without notice.",
+  "notice_given_date": "The calendar date on which notice of termination was communicated to the other party. Pitfall: Confusing the date the notice letter was drafted with the date it was actually received and took effect.",
+  "advice_date": "The date on which legal advice is being provided. Pitfall: Failing to assess ongoing time limits under section 111 relative to this date when advising whether a prospective claim is still in time.",
+  "claim_presented_date": "The date on which the unfair dismissal complaint is submitted to the employment tribunal. Pitfall: Assuming a claim cannot be presented before the termination date when notice has been given, contrary to section 111(3).",
+  "annual_pay": "The employee's total annual remuneration. Pitfall: Including non-contractual or unearned benefits improperly when calculating annual pay, or failing to reconcile it with weekly pay for statutory cap calculations under section 124.",
+  "weekly_pay": "The employee's gross weekly remuneration used to determine the 52 weeks' pay limit under section 124(1ZA). Pitfall: Miscalculating a week's pay where variable pay or bonuses are involved.",
+  "age": "The chronological age of the claimant. Pitfall: Relying on age to establish basic eligibility for ordinary unfair dismissal, whereas continuous service under section 108 is the determinative criterion."
+ },
+ "audit": {
+  "steps_written": 5,
+  "steps_expected": 5,
+  "fact_notes": 9
+ },
+ "model": "gemini-3.8-flash-high"
+}
