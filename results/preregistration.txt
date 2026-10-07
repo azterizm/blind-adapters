@@ -1,0 +1,4 @@
+Pre-registration commit: f7857640cd8ea539454c2751d23411e762774f04 (2026-10-07)
+Files frozen at that commit: eval/matters.py (HELD_OUT), eval/heldout_key.json, cloud/questions.py.
+eval/final.py refuses to score held-out matters if eval/heldout_key.json or the HELD_OUT
+matters differ from that commit.
