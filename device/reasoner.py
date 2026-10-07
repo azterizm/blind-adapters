@@ -353,8 +353,11 @@ class SealedDevice:
         user = step_prompt(s, statute, shown, self.narrative, analysis)
         t0 = time.perf_counter()
         try:
-            out = (llm.cloud_chat_json(SYS_STEP, user) if arm.get("cloud")
-                   else llm.device_chat_json(SYS_STEP, user, max_tokens=500))
+            if arm.get("cloud"):
+                from cloud.teacher import _retry
+                out = _retry(lambda: llm.cloud_chat_json(SYS_STEP, user))
+            else:
+                out = llm.device_chat_json(SYS_STEP, user, max_tokens=500)
         except ValueError:
             out = {"answer": "unclear", "reasoning": "model returned no valid JSON"}
         g = ground(out, self.narrative, set(step["authority"]))
