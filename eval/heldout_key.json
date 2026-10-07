@@ -1,0 +1,224 @@
+{
+ "_written": "2026-10-07, before any teacher data, training or held-out run",
+ "_rule": {
+  "scope": "Arms B, T, A and A+T run on the 10 in-domain held-out matters with the key's task, so routing does not affect the adapter rule. Routing and fact extraction run on base weights, once per matter, for all arms. Fields are the scored fields of eval/heldout_key.json (task excluded, fairness not scored).",
+  "R1": "In-scope fields (4 in-scope matters, 22 fields): A correct >= T correct, and A correct >= B correct.",
+  "R2": "Novel matters (6): (novel matters A gets right) - (novel matters B gets right) >= 2, and A correct >= T correct on novel fields. A novel matter is right when all its novel fields are correct.",
+  "R3": "Wrong answers that passed the gate (computed or grounded), over all scored fields of the 10 in-domain matters: A <= T.",
+  "R4": "0 secrets reach the cloud in any arm, and every matter, out-of-scope included, issues exactly c adapter queries and 56 text queries.",
+  "R5": "Every adapter fetch decodes byte-exact and its sha256 matches the public manifest.",
+  "R6": "The M3 parity gate passed: mean NLL of the teacher answer on 20 dev prompts, MLX 4-bit + adapter within 0.05 of Modal bf16 + adapter, and the adapter lowers NLL against base on both.",
+  "verdict": "Adapter verdict PASS only if R1 to R6 all pass.",
+  "routing": "Separate verdict, same bar as blind-counsel task selection: the router's task matches the key on all 12 held-out matters (none for the 2 out-of-scope matters), 12/12 to PASS. A misrouted matter that a failed precondition later stops still counts as a routing miss; such stops are reported.",
+  "reported_not_ruled": "A+T, the teacher row, calculator fields per arm, refusals, latency, swap time, fetch bytes, dev results."
+ },
+ "_conventions": {
+  "carried_over": "time_limit, qualifying_service, compensation_cap, relevant_date and payment_amount follow the blind-counsel final-round conventions (eval/final_round_key.json)",
+  "qualifying_service": "the narrow s108(1) or s155 two-year test; it stays NO where s108(3) disapplies it",
+  "automatic_unfair_reason": "YES when the reason or principal reason falls within s99, s100 or s103A",
+  "suitable_alternative": "YES when the employee keeps the right to a redundancy payment under s141",
+  "compensation_cap": "\"uncapped\" where s124(1A) applies (s100, s103A)",
+  "payment_amount": "0 where the dismissal is not by reason of redundancy or s141 removes the right",
+  "refuse": "a matter whose key has dismissed NO is answered correctly only by a grounded NO, which stops the matter (REFUSE-AND-FLAG)",
+  "novel_fields": "fields that test law outside the precomputed entries; a novel matter is correct for an arm when all its novel fields are correct",
+  "not_scored": "fairness (s98) is reported, not scored"
+ },
+ "held_out": {
+  "IS-UD1": {
+   "split": "in_scope",
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 52000
+  },
+  "IS-UD2": {
+   "split": "in_scope",
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "no",
+   "compensation_cap": 27040
+  },
+  "IS-R1": {
+   "split": "in_scope",
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-09-30",
+   "qualifying_service": "yes",
+   "payment_amount": 12016
+  },
+  "IS-R2": {
+   "split": "in_scope",
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-09-11",
+   "qualifying_service": "no",
+   "payment_amount": 0
+  },
+  "NV-CD1": {
+   "split": "novel",
+   "novel_fields": [
+    "dismissed"
+   ],
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 46000
+  },
+  "NV-CD2": {
+   "split": "novel",
+   "novel_fields": [
+    "dismissed"
+   ],
+   "task": "uk_unfair_dismissal",
+   "dismissed": "no"
+  },
+  "NV-AU1": {
+   "split": "novel",
+   "novel_fields": [
+    "automatic_unfair_reason"
+   ],
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "no",
+   "automatic_unfair_reason": "yes",
+   "time_limit": "yes",
+   "compensation_cap": 26000
+  },
+  "NV-AU2": {
+   "split": "novel",
+   "novel_fields": [
+    "automatic_unfair_reason"
+   ],
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "no",
+   "automatic_unfair_reason": "yes",
+   "time_limit": "yes",
+   "compensation_cap": "uncapped"
+  },
+  "NV-SA1": {
+   "split": "novel",
+   "novel_fields": [
+    "suitable_alternative"
+   ],
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "no",
+   "relevant_date": "2026-08-28",
+   "qualifying_service": "yes",
+   "payment_amount": 0
+  },
+  "NV-SA2": {
+   "split": "novel",
+   "novel_fields": [
+    "suitable_alternative"
+   ],
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-09-30",
+   "qualifying_service": "yes",
+   "payment_amount": 4200
+  },
+  "OS-1": {
+   "split": "out_of_scope",
+   "task": null
+  },
+  "OS-2": {
+   "split": "out_of_scope",
+   "task": null
+  }
+ },
+ "dev": {
+  "UD-A": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 41600
+  },
+  "UD-B": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 34320
+  },
+  "UD-C": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "no",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 39000
+  },
+  "UD-D": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "no",
+   "compensation_cap": 45500
+  },
+  "UD-E": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 123543
+  },
+  "R-A": {
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-07-31",
+   "qualifying_service": "yes",
+   "payment_amount": 3000
+  },
+  "R-B": {
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-08-14",
+   "qualifying_service": "no",
+   "payment_amount": 0
+  },
+  "OOS": {
+   "task": null
+  },
+  "dismissal": {
+   "task": "uk_unfair_dismissal",
+   "dismissed": "yes",
+   "qualifying_service": "yes",
+   "automatic_unfair_reason": "no",
+   "time_limit": "yes",
+   "compensation_cap": 48500
+  },
+  "redundancy": {
+   "task": "uk_redundancy_payment",
+   "dismissed": "yes",
+   "by_reason_of_redundancy": "yes",
+   "suitable_alternative": "yes",
+   "relevant_date": "2026-05-29",
+   "qualifying_service": "yes",
+   "payment_amount": 6405
+  }
+ }
+}
