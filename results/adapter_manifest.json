@@ -1,0 +1,19 @@
+{
+ "variant": "int8",
+ "records": [
+  {
+   "index": 0,
+   "name": "uk_unfair_dismissal",
+   "file": "uk_unfair_dismissal.int8",
+   "size": 46566168,
+   "sha256": "2ece8a394c6103d9fb27ede94df144e64c1fb040dda7dcfaf310e2817c25ec09"
+  },
+  {
+   "index": 1,
+   "name": "uk_redundancy_payment",
+   "file": "uk_redundancy_payment.int8",
+   "size": 46566168,
+   "sha256": "38210455f9f01a6cbf15bea1dbe3bfaf1e97e29436253b52a3c53a3361148044"
+  }
+ ]
+}

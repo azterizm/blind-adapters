@@ -1,0 +1,71 @@
+{
+ "uk_unfair_dismissal": {
+  "task": "uk_unfair_dismissal",
+  "n_dev": 20,
+  "params": 43646976,
+  "sizes": {
+   "fp16": 87349280,
+   "int8": 46566168
+  },
+  "modal_bf16": {
+   "adapter": 0.22322463914752005,
+   "base": 1.0041468769311905
+  },
+  "mlx_4bit": {
+   "base": 0.9713405847549439,
+   "base_accuracy": 17,
+   "fp16": {
+    "nll": 0.23283246867358684,
+    "swap_s": 0.019378500001039356,
+    "accuracy": 17
+   },
+   "int8": {
+    "nll": 0.23275104612112046,
+    "swap_s": 0.01203329098643735,
+    "accuracy": 17
+   }
+  },
+  "gate": {
+   "nll_gap": 0.009607829526066786,
+   "within_tol": true,
+   "lowers_nll_mlx": true,
+   "lowers_nll_modal": true,
+   "passed": true
+  }
+ },
+ "uk_redundancy_payment": {
+  "task": "uk_redundancy_payment",
+  "n_dev": 20,
+  "params": 43646976,
+  "sizes": {
+   "fp16": 87349280,
+   "int8": 46566168
+  },
+  "modal_bf16": {
+   "adapter": 0.2562973961234093,
+   "base": 1.1185097485780715
+  },
+  "mlx_4bit": {
+   "base": 1.0952893614768981,
+   "base_accuracy": 19,
+   "fp16": {
+    "nll": 0.2719015195965767,
+    "swap_s": 0.05633941601263359,
+    "accuracy": 20
+   },
+   "int8": {
+    "nll": 0.27163394503295424,
+    "swap_s": 0.010578166984487325,
+    "accuracy": 20
+   }
+  },
+  "gate": {
+   "nll_gap": 0.01560412347316742,
+   "within_tol": true,
+   "lowers_nll_mlx": true,
+   "lowers_nll_modal": true,
+   "passed": true
+  }
+ },
+ "_gate_passed": true
+}
