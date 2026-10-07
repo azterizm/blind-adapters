@@ -1,0 +1,54 @@
+{
+ "uk_unfair_dismissal": {
+  "matters": 330,
+  "examples": 870,
+  "matters_with_examples": 322,
+  "drops": {
+   "shares an 8-gram with a held-out matter": 2,
+   "answer unclear disagrees with intended yes": 32,
+   "answer unclear disagrees with intended no": 1,
+   "answer yes disagrees with intended no": 6,
+   "authority quote not verbatim from the statute": 1
+  },
+  "by_step": {
+   "dismissed": {
+    "yes": 291,
+    "no": 31
+   },
+   "automatic_unfair_reason": {
+    "no": 181,
+    "yes": 77
+   },
+   "fairness": {
+    "unclear": 172,
+    "yes": 117,
+    "no": 1
+   }
+  }
+ },
+ "uk_redundancy_payment": {
+  "matters": 330,
+  "examples": 874,
+  "matters_with_examples": 320,
+  "drops": {
+   "shares an 8-gram with a held-out matter": 2,
+   "answer yes disagrees with intended no": 8,
+   "authority quote not verbatim from the statute": 6,
+   "answer unclear disagrees with intended yes": 2
+  },
+  "by_step": {
+   "dismissed": {
+    "yes": 281,
+    "no": 39
+   },
+   "by_reason_of_redundancy": {
+    "yes": 227,
+    "no": 46
+   },
+   "suitable_alternative": {
+    "yes": 234,
+    "no": 47
+   }
+  }
+ }
+}

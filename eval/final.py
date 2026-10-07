@@ -231,7 +231,8 @@ def main():
                     n_secrets=r["n_secrets"], router_calls=r["router_calls"], adapter_fetch_ok=r["adapter_fetch_ok"],
                     fetched=r.get("fetched", {}))
     full = dict(split=a.split, frozen=frozen, routing=routing, table=table, rule=rule, verdicts=verdicts,
-                report=report, runs={f"{m}|{ar}": dict(clean(r), steps=r.get("steps", [])) for (m, ar), r in runs.items()})
+                report=report, runs={f"{m}|{ar}": dict(clean(r), steps=r.get("steps", []), facts=r.get("facts"),
+                                           facts_rejected=r.get("facts_rejected")) for (m, ar), r in runs.items()})
     json.dump(full, open(os.path.join(out_dir, "results.json"), "w"), indent=1, default=str)
     summary = dict(full, runs={f"{m}|{ar}": clean(r) for (m, ar), r in runs.items()})
     if not a.only:

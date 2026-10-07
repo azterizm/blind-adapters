@@ -1,0 +1,35 @@
+{
+ "uk_unfair_dismissal": {
+  "key": "scope:uk_unfair_dismissal",
+  "kind": "scope",
+  "task": "uk_unfair_dismissal",
+  "in_scope": [
+   "The individual is an employee whose employment has terminated, or who has been given notice of termination, including situations where the employee resigned and claims constructive dismissal.",
+   "The inquiry asks whether the employee has a viable unfair dismissal claim against their employer under the Employment Rights Act 1996, including issues of qualifying service, exceptions for automatically unfair dismissal, time limits, procedural and substantive fairness, or potential compensation."
+  ],
+  "out_of_scope": [
+   "Matters solely concerning entitlement to or the calculation of a statutory redundancy payment under the Employment Rights Act 1996 (refer to uk_redundancy_payment).",
+   "Situations where employment is ongoing and no notice of termination has been given nor has the employee resigned.",
+   "Claims relying on automatic unfair dismissal grounds other than sections 99, 100, or 103A of the Employment Rights Act 1996."
+  ],
+  "one_line": "Apply this task to advise an employee whose employment has ended or is ending on whether they have an actionable unfair dismissal claim under the Employment Rights Act 1996.",
+  "model": "gemini-3.8-flash-high"
+ },
+ "uk_redundancy_payment": {
+  "key": "scope:uk_redundancy_payment",
+  "kind": "scope",
+  "task": "uk_redundancy_payment",
+  "in_scope": [
+   "The client is an employee whose employment has terminated or is facing termination (including by employer notice, expiry of a fixed-term contract, or resignation claimed as constructive dismissal).",
+   "The termination is linked to the employer ceasing or intending to cease business (completely or at the employee's place of work) or to diminished requirements for employees to carry out work of a particular kind.",
+   "The client seeks advice on eligibility for a statutory redundancy payment under the Employment Rights Act 1996, the effect of an offer of alternative employment or renewal under section 141, or the calculation of the statutory redundancy payment."
+  ],
+  "out_of_scope": [
+   "Claims where the client seeks advice on whether the dismissal was fair or unfair, or on remedies for ordinary unfair dismissal under the Employment Rights Act 1996 (refer to uk_unfair_dismissal).",
+   "Disputes concerning non-statutory contractual redundancy schemes or enhanced redundancy pay exceeding statutory rights.",
+   "Terminations that are purely for conduct, capability, or reasons unconnected to a business closure or diminished requirements for employees."
+  ],
+  "one_line": "Apply this task if an employee seeks advice on entitlement to or calculation of a statutory redundancy payment under the Employment Rights Act 1996 arising from an actual or potential redundancy situation.",
+  "model": "gemini-3.8-flash-high"
+ }
+}

@@ -12,7 +12,6 @@
     modal run pir/modal_app.py::sweep              # numpy + Go, writes results/pir_sweep.json
     modal run pir/modal_app.py::network --n 16     # laptop <-> Modal fetch of the real adapters
 """
-from __future__ import annotations
 
 import json
 import os

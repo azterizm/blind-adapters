@@ -1,63 +1,156 @@
 {
  "S": 46566168,
  "measured": {
+  "2,16": {
+   "server_numpy_s": 1.062577486038208,
+   "server_go_s": 0.264448,
+   "server_go_one_query_s": 0.016528,
+   "go_p": 991
+  },
   "2,64": {
+   "server_numpy_s": 1.0080904960632324,
+   "server_go_s": 0.753536,
+   "server_go_one_query_s": 0.011774,
+   "go_p": 991,
    "client_s": 2.157745291944593,
    "client_query_s": 0.002452207962051034,
    "client_decode_s": 2.155293083982542
   },
   "2,256": {
+   "server_numpy_s": 2.342481851577759,
+   "server_go_s": 3.807232,
+   "server_go_one_query_s": 0.014872,
+   "go_p": 991,
    "client_s": 1.1317263749660924,
    "client_query_s": 0.006622624990995973,
    "client_decode_s": 1.1251037499750964
   },
   "2,1024": {
+   "server_numpy_s": 4.207773208618164,
+   "server_go_s": 9.325568,
+   "server_go_one_query_s": 0.009107,
+   "go_p": 991,
    "client_s": 0.9626343339914456,
    "client_query_s": 0.05612274998566136,
    "client_decode_s": 0.9065115840057842
   },
+  "16,16": {
+   "server_numpy_s": 9.350262880325317,
+   "server_go_s": 3.307136,
+   "server_go_one_query_s": 0.206696,
+   "go_p": 991
+  },
   "16,64": {
+   "server_numpy_s": 4.4068357944488525,
+   "server_go_s": 8.211072,
+   "server_go_one_query_s": 0.128298,
+   "go_p": 991,
    "client_s": 2.017427457962185,
    "client_query_s": 0.004963249957654625,
    "client_decode_s": 2.0124642080045305
   },
   "16,256": {
+   "server_numpy_s": 11.160332918167114,
+   "server_go_s": 16.547072,
+   "server_go_one_query_s": 0.064637,
+   "go_p": 991,
    "client_s": 1.1222462919540703,
    "client_query_s": 0.033028499979991466,
    "client_decode_s": 1.0892177919740789
   },
   "16,1024": {
+   "server_numpy_s": 30.386472463607788,
+   "server_go_s": 60.311552,
+   "server_go_one_query_s": 0.058898,
+   "go_p": 833,
    "client_s": 1.2980157500132918,
    "client_query_s": 0.41710341698490083,
    "client_decode_s": 0.880912333028391
   },
+  "128,16": {
+   "server_numpy_s": 29.837350368499756,
+   "server_go_s": 9.210512,
+   "server_go_one_query_s": 0.575657,
+   "go_p": 991
+  },
   "128,64": {
+   "server_numpy_s": 33.99453401565552,
+   "server_go_s": 51.669952,
+   "server_go_one_query_s": 0.807343,
+   "go_p": 991,
    "client_s": 2.053187291021459,
    "client_query_s": 0.0333509580232203,
    "client_decode_s": 2.0198363329982385
   },
   "128,256": {
+   "server_numpy_s": 88.98689818382263,
+   "server_go_s": 121.55264,
+   "server_go_one_query_s": 0.474815,
+   "go_p": 701,
    "client_s": 1.3528987090103328,
    "client_query_s": 0.26258358400082216,
    "client_decode_s": 1.0903151250095107
   },
   "128,1024": {
+   "server_numpy_s": 251.1646373271942,
+   "server_go_s": 431.62112,
+   "server_go_one_query_s": 0.421505,
+   "go_p": 495,
    "client_s": 4.42787750007119,
    "client_query_s": 3.486623708042316,
    "client_decode_s": 0.9412537920288742
   },
+  "1024,16": {
+   "server_numpy_s": 245.23942470550537
+  },
   "1024,64": {
+   "server_numpy_s": 237.27384185791016,
    "client_s": 2.2910085000330582,
    "client_query_s": 0.27061387500725687,
    "client_decode_s": 2.0203946250258014
   },
   "1024,256": {
+   "server_numpy_s": 616.6308410167694,
    "client_s": 3.308536833967082,
    "client_query_s": 2.2095916249672882,
    "client_decode_s": 1.098945208999794
+  },
+  "1024,1024": {
+   "server_numpy_s": 1600.1361889839172
   }
  },
  "meta": {
-  "client_machine": "laptop (Apple M4, 16 GB)"
+  "numpy_N2": {
+   "db_gen_s": 0.16542387008666992,
+   "cpu": {
+    "cpus": 48,
+    "model": "unknown"
+   }
+  },
+  "numpy_N16": {
+   "db_gen_s": 1.070199966430664,
+   "cpu": {
+    "cpus": 48,
+    "model": "unknown"
+   }
+  },
+  "numpy_N128": {
+   "db_gen_s": 8.104182004928589,
+   "cpu": {
+    "cpus": 48,
+    "model": "unknown"
+   }
+  },
+  "numpy_N1024": {
+   "db_gen_s": 51.164419412612915,
+   "cpu": {
+    "cpus": 48,
+    "model": "unknown"
+   }
+  },
+  "go_cpu": {
+   "cpus": 18,
+   "model": "unknown"
+  }
  }
 }
