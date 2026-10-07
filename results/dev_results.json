@@ -1,0 +1,5060 @@
+{
+ "split": "dev",
+ "frozen": {
+  "code": "dff9ed7b60bca5b944401083e23a0a9403511ad3",
+  "dirty": false,
+  "library": {
+   "variant": "int8",
+   "records": [
+    {
+     "index": 0,
+     "name": "uk_unfair_dismissal",
+     "file": "uk_unfair_dismissal.int8",
+     "size": 46566168,
+     "sha256": "2ece8a394c6103d9fb27ede94df144e64c1fb040dda7dcfaf310e2817c25ec09"
+    },
+    {
+     "index": 1,
+     "name": "uk_redundancy_payment",
+     "file": "uk_redundancy_payment.int8",
+     "size": 46566168,
+     "sha256": "38210455f9f01a6cbf15bea1dbe3bfaf1e97e29436253b52a3c53a3361148044"
+    }
+   ]
+  },
+  "layout": {
+   "N": 2,
+   "S": 46566168,
+   "c": 1024,
+   "m": 2048,
+   "b": 8,
+   "chunk": 45475,
+   "L": 45475,
+   "hint": 186265600,
+   "upload": 8388608,
+   "download": 186265600,
+   "server_madds": 95367987200
+  },
+  "hint_compute_s": 1.2392464579897933
+ },
+ "routing": {
+  "UD-A": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 9.191870499984361
+  },
+  "UD-B": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 6.845462416997179
+  },
+  "UD-C": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 6.78668583300896
+  },
+  "UD-D": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 6.633194083988201
+  },
+  "UD-E": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 7.067662958987057
+  },
+  "R-A": {
+   "expected": "uk_redundancy_payment",
+   "got": "uk_redundancy_payment",
+   "correct": true,
+   "seconds": 6.959322125010658
+  },
+  "R-B": {
+   "expected": "uk_redundancy_payment",
+   "got": "uk_redundancy_payment",
+   "correct": true,
+   "seconds": 6.541580374992918
+  },
+  "OOS": {
+   "expected": null,
+   "got": null,
+   "correct": true,
+   "seconds": 6.301775166997686
+  },
+  "dismissal": {
+   "expected": "uk_unfair_dismissal",
+   "got": "uk_unfair_dismissal",
+   "correct": true,
+   "seconds": 7.347723499988206
+  },
+  "redundancy": {
+   "expected": "uk_redundancy_payment",
+   "got": "uk_redundancy_payment",
+   "correct": true,
+   "seconds": 7.169324167014565
+  }
+ },
+ "table": {
+  "B": {
+   "correct": 44,
+   "fields": 48,
+   "wrong": 4,
+   "wrong_past_gate": 0,
+   "refused": 1,
+   "in_scope": 0,
+   "novel_fields": 0,
+   "novel_matters": 0,
+   "calc": 26,
+   "model": 18,
+   "mean_seconds": 64.5626658999885,
+   "mean_swap_ms": null,
+   "leaked": 0
+  },
+  "T": {
+   "correct": 43,
+   "fields": 48,
+   "wrong": 5,
+   "wrong_past_gate": 2,
+   "refused": 1,
+   "in_scope": 0,
+   "novel_fields": 0,
+   "novel_matters": 0,
+   "calc": 26,
+   "model": 17,
+   "mean_seconds": 81.70874835419818,
+   "mean_swap_ms": null,
+   "leaked": 0
+  },
+  "A": {
+   "correct": 47,
+   "fields": 48,
+   "wrong": 1,
+   "wrong_past_gate": 0,
+   "refused": 1,
+   "in_scope": 0,
+   "novel_fields": 0,
+   "novel_matters": 0,
+   "calc": 26,
+   "model": 21,
+   "mean_seconds": 63.46395409170073,
+   "mean_swap_ms": 12.555837792913533,
+   "leaked": 0
+  },
+  "AT": {
+   "correct": 47,
+   "fields": 48,
+   "wrong": 1,
+   "wrong_past_gate": 0,
+   "refused": 1,
+   "in_scope": 0,
+   "novel_fields": 0,
+   "novel_matters": 0,
+   "calc": 26,
+   "model": 21,
+   "mean_seconds": 81.61457750820554,
+   "mean_swap_ms": 10.097712659949643,
+   "leaked": 0
+  }
+ },
+ "rule": {},
+ "verdicts": {},
+ "report": {
+  "UD-A": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "unclear"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 41600,
+      "got": 41600,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "unclear"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "yes",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": true,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 41600,
+      "got": 41600,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "unclear"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 41600,
+      "got": 41600,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "unclear"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 41600,
+      "got": 41600,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "UD-B": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "ungrounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 34320,
+      "got": 34320,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 34320,
+      "got": 34320,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 34320,
+      "got": 34320,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 34320,
+      "got": 34320,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "UD-C": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 39000,
+      "got": 39000,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "ungrounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 39000,
+      "got": 39000,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 39000,
+      "got": 39000,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 39000,
+      "got": 39000,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "UD-D": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "ungrounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 45500,
+      "got": 45500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "ungrounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 45500,
+      "got": 45500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 45500,
+      "got": 45500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 45500,
+      "got": 45500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "UD-E": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "unclear",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "ungrounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 123543,
+      "got": 123543,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "yes",
+      "correct": false,
+      "novel": false,
+      "kind": "model",
+      "gated": true,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 123543,
+      "got": 123543,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 123543,
+      "got": 123543,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 123543,
+      "got": 123543,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "R-A": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-07-31",
+      "got": "2026-07-31",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 3000,
+      "got": 3000.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-07-31",
+      "got": "2026-07-31",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 3000,
+      "got": 3000.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-07-31",
+      "got": "2026-07-31",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 3000,
+      "got": 3000.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-07-31",
+      "got": "2026-07-31",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 3000,
+      "got": 3000.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "R-B": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-08-14",
+      "got": "2026-08-14",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 0,
+      "got": 0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-08-14",
+      "got": "2026-08-14",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 0,
+      "got": 0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-08-14",
+      "got": "2026-08-14",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 0,
+      "got": 0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-08-14",
+      "got": "2026-08-14",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 0,
+      "got": 0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "OOS": {
+   "split": "dev",
+   "arms": {
+    "B": [],
+    "T": [],
+    "A": [],
+    "AT": []
+   }
+  },
+  "dismissal": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 48500,
+      "got": 48500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 48500,
+      "got": 48500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 48500,
+      "got": 48500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "automatic_unfair_reason",
+      "expected": "no",
+      "got": "no",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "time_limit",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "compensation_cap",
+      "expected": 48500,
+      "got": 48500,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  },
+  "redundancy": {
+   "split": "dev",
+   "arms": {
+    "B": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-05-29",
+      "got": "2026-05-29",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 6405,
+      "got": 6405.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "T": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-05-29",
+      "got": "2026-05-29",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 6405,
+      "got": 6405.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "A": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-05-29",
+      "got": "2026-05-29",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 6405,
+      "got": 6405.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ],
+    "AT": [
+     {
+      "field": "dismissed",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "by_reason_of_redundancy",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "suitable_alternative",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "model",
+      "gated": false,
+      "status": "grounded"
+     },
+     {
+      "field": "relevant_date",
+      "expected": "2026-05-29",
+      "got": "2026-05-29",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "qualifying_service",
+      "expected": "yes",
+      "got": "yes",
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     },
+     {
+      "field": "payment_amount",
+      "expected": 6405,
+      "got": 6405.0,
+      "correct": true,
+      "novel": false,
+      "kind": "calc",
+      "gated": false,
+      "status": "computed"
+     }
+    ]
+   }
+  }
+ },
+ "runs": {
+  "UD-A|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 73.89458474999992,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.03574233298422769,
+    "adapter_s": 2.4318275839905255,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-A|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 101.4542747499654,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01777058298466727,
+    "adapter_s": 2.36501137498999,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-A|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 82.02346975001274,
+   "swap_s": 0.012610208010300994,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.051968916959594935,
+    "adapter_s": 3.5669125829590484,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-A|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 101.23857170797419,
+   "swap_s": 0.010227749997284263,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01743158302269876,
+    "adapter_s": 2.613897708011791,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-B|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 81.1196025829995,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.03443445800803602,
+    "adapter_s": 2.524610417021904,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-B|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 97.12440275005065,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.017956916999537498,
+    "adapter_s": 2.5289745000191033,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-B|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 82.73398795799585,
+   "swap_s": 0.020874917041510344,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.020362707960885018,
+    "adapter_s": 3.689785833004862,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-B|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 100.55278550001094,
+   "swap_s": 0.010413040989078581,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.022712333011440933,
+    "adapter_s": 2.7464225830044597,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-C|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 78.72183654195396,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.03727600001730025,
+    "adapter_s": 2.733483250020072,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-C|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 91.83523895801045,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01737066701753065,
+    "adapter_s": 2.4711517079849727,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-C|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 72.22957616701024,
+   "swap_s": 0.010829167033080012,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.016938084037974477,
+    "adapter_s": 2.4787061659735627,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-C|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 94.25094583304599,
+   "swap_s": 0.009656416019424796,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01513224997324869,
+    "adapter_s": 2.450184875051491,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-D|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 74.17406170797767,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.027442207967396826,
+    "adapter_s": 2.504192000022158,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-D|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 91.13297941698693,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.017348124994896352,
+    "adapter_s": 2.4798792500514537,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-D|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 72.04211291699903,
+   "swap_s": 0.011620000004768372,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01808387495111674,
+    "adapter_s": 2.498884124972392,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-D|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 95.95675208303146,
+   "swap_s": 0.010344334004912525,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.018414582998957485,
+    "adapter_s": 2.613262415979989,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-E|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED WITH FLAGS",
+   "seconds": 80.26059725001687,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.034543166984803975,
+    "adapter_s": 2.728579417045694,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-E|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 105.29984491696814,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01735233300132677,
+    "adapter_s": 2.77262433298165,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-E|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 80.41648341703694,
+   "swap_s": 0.011386375001166016,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.016131707991007715,
+    "adapter_s": 2.77947095799027,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "UD-E|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 99.93848908296786,
+   "swap_s": 0.010186208004597574,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01688537502195686,
+    "adapter_s": 2.700112375023309,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-A|B": {
+   "arm": "B",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 54.726151834009215,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.03326724999351427,
+    "adapter_s": 2.568043332954403,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-A|T": {
+   "arm": "T",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 71.07982879097108,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.016518375021405518,
+    "adapter_s": 2.4410986669827253,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-A|A": {
+   "arm": "A",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 51.79364579200046,
+   "swap_s": 0.01081516599515453,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.018991958000697196,
+    "adapter_s": 2.4323554159491323,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-A|AT": {
+   "arm": "AT",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 67.8307581670233,
+   "swap_s": 0.009648707986343652,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.01586033299099654,
+    "adapter_s": 2.431931375002023,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-B|B": {
+   "arm": "B",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 54.27222245797748,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.03395091701531783,
+    "adapter_s": 2.431555708986707,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-B|T": {
+   "arm": "T",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 72.89000374998432,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.016998749983031303,
+    "adapter_s": 2.4065262909862213,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-B|A": {
+   "arm": "A",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 54.19798729097238,
+   "swap_s": 0.01079050003318116,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.017268249997869134,
+    "adapter_s": 2.4255861670244485,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "R-B|AT": {
+   "arm": "AT",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 72.21738595800707,
+   "swap_s": 0.00996262498665601,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 11,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.01626091601792723,
+    "adapter_s": 2.3911700830212794,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "OOS|B": {
+   "arm": "B",
+   "task": null,
+   "verdict": "REFUSE-AND-FLAG: outside covered task types",
+   "seconds": 2.3427059169625863,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     0,
+     0
+    ],
+    "params": {},
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.03550974995596334,
+    "adapter_s": 2.3070311670308,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "OOS|T": {
+   "arm": "T",
+   "task": null,
+   "verdict": "REFUSE-AND-FLAG: outside covered task types",
+   "seconds": 2.1382310000481084,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     0,
+     0
+    ],
+    "params": {},
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.010706041008234024,
+    "adapter_s": 2.1274759999942034,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "OOS|A": {
+   "arm": "A",
+   "task": null,
+   "verdict": "REFUSE-AND-FLAG: outside covered task types",
+   "seconds": 2.1204686669516377,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     0,
+     0
+    ],
+    "params": {},
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.01074470899766311,
+    "adapter_s": 2.1096774580073543,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "OOS|AT": {
+   "arm": "AT",
+   "task": null,
+   "verdict": "REFUSE-AND-FLAG: outside covered task types",
+   "seconds": 2.1239979999954812,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 10,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     0,
+     0
+    ],
+    "params": {},
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.010598791996017098,
+    "adapter_s": 2.1133498750277795,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "dismissal|B": {
+   "arm": "B",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 88.92088462499669,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 17,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.027821582974866033,
+    "adapter_s": 2.4796384579967707,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "dismissal|T": {
+   "arm": "T",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 107.97576716699405,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 17,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.016372375015635043,
+    "adapter_s": 2.501274874957744,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "dismissal|A": {
+   "arm": "A",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 78.02689083298901,
+   "swap_s": 0.012794291018508375,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 17,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.015481291979085654,
+    "adapter_s": 2.5227869999944232,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "dismissal|AT": {
+   "arm": "AT",
+   "task": "uk_unfair_dismissal",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 105.61536916700425,
+   "swap_s": 0.009967040969058871,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 17,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     71,
+     71
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s108": {
+      "qualifying_years": {
+       "quote": "unless he has been continuously employed for a period of not less than two years ending with the effective date of termination",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s111": {
+      "time_limit_months": {
+       "quote": "before the end of the period of three months beginning with the effective date of termination,",
+       "value": 3.0
+      }
+     },
+     "uk/ukpga/1996/18/s124": {
+      "cap_fixed_gbp": {
+       "quote": "The amount specified in this subsection is the lower of\u2014\n    (a) \u00a3123,543,",
+       "value": 123543.0
+      },
+      "cap_weeks": {
+       "quote": "is the lower of\u2014\n    (a) \u00a3123,543, and\n    (b) 52 multiplied by a week\u2019s pay of the person concerned.",
+       "value": 52.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 0,
+    "adapter_sha_ok": true,
+    "text_s": 0.016338333021849394,
+    "adapter_s": 2.48751354200067,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "redundancy|B": {
+   "arm": "B",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 57.19401133299107,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 12,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.035209541965741664,
+    "adapter_s": 2.5493489170330577,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "redundancy|T": {
+   "arm": "T",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 76.15691204200266,
+   "swap_s": null,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 12,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.01732687500771135,
+    "adapter_s": 2.601163167040795,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "redundancy|A": {
+   "arm": "A",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 59.05491812503897,
+   "swap_s": 0.011281915998551995,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 12,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.016595459019299597,
+    "adapter_s": 2.66975454200292,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  },
+  "redundancy|AT": {
+   "arm": "AT",
+   "task": "uk_redundancy_payment",
+   "verdict": "ANSWERED (every step computed or grounded)",
+   "seconds": 76.42071958299493,
+   "swap_s": 0.01047329098219052,
+   "text_queries": 56,
+   "adapter_queries": 1024,
+   "leaked": 0,
+   "n_secrets": 12,
+   "router_calls": 0,
+   "adapter_fetch_ok": true,
+   "fetched": {
+    "bad_sha": [],
+    "quotes_rechecked": [
+     66,
+     66
+    ],
+    "params": {
+     "uk/ukpga/1996/18/s86": {
+      "notice_weeks_max": {
+       "quote": "is not less than twelve weeks\u2019 notice if his period of continuous employment is twelve years or more",
+       "value": 12.0
+      },
+      "notice_weeks_per_year": {
+       "quote": "is not less than one week\u2019s notice for each year of continuous employment if his period of continuous employment is two years or more",
+       "value": 1.0
+      },
+      "notice_weeks_under_2y": {
+       "quote": "is not less than one week\u2019s notice if his period of continuous employment is less than two years",
+       "value": 1.0
+      }
+     },
+     "uk/ukpga/1996/18/s155": {
+      "qualifying_years": {
+       "quote": "continuously employed for a period of not less than two years ending with the relevant date",
+       "value": 2.0
+      }
+     },
+     "uk/ukpga/1996/18/s162": {
+      "age_lower": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 22.0
+      },
+      "age_upper": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 41.0
+      },
+      "max_years": {
+       "quote": "Where twenty years of employment have been reckoned under subsection (1), no account shall be taken under that subsection",
+       "value": 20.0
+      },
+      "rate_lower_weeks": {
+       "quote": "half a week\u2019s pay for each year of employment not within paragraph (a) or (b)",
+       "value": 0.5
+      },
+      "rate_middle_weeks": {
+       "quote": "one week\u2019s pay for a year of employment (not within paragraph (a)) in which he was not below the age of twenty-two",
+       "value": 1.0
+      },
+      "rate_upper_weeks": {
+       "quote": "one and a half weeks\u2019 pay for a year of employment in which the employee was not below the age of forty-one",
+       "value": 1.5
+      }
+     },
+     "uk/ukpga/1996/18/s227": {
+      "week_pay_limit_gbp": {
+       "quote": "(c) a redundancy payment,\n  the amount of a week\u2019s pay shall not exceed \u00a3751.",
+       "value": 751.0
+      }
+     }
+    },
+    "text_queries": 56,
+    "adapter_queries": 1024,
+    "adapter_index": 1,
+    "adapter_sha_ok": true,
+    "text_s": 0.015765124990139157,
+    "adapter_s": 2.651509332994465,
+    "bytes": {
+     "text_up": 159040,
+     "text_down": 367136,
+     "adapter_up": 8388608,
+     "adapter_down": 186265600
+    }
+   }
+  }
+ }
+}
