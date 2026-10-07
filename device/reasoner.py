@@ -1,24 +1,29 @@
 # from blind-counsel 8b1bf8f device/reasoner.py
-"""Device-side Tier 2: the laptop applies PIR-fetched public reasoning to the private
-client account with its own local model (Qwen3-8B, MLX). Nothing private leaves.
+"""Device side: the laptop applies public law to the private client account with its own
+model (Qwen3-8B, MLX). Nothing private leaves.
 
 Per matter:
-  1. select   -- the local model picks the task type from the PUBLIC task index (a
-                 closed choice) or "none" -> refuse-and-flag. Local only.
-  2. fetch    -- ONE fixed batch of `fetch_budget` PIR queries, the same count for
-                 every matter and even for a refusal (dummy rows pad the batch), so
-                 the cloud cannot tell the task type or whether the device answered.
-                 Fetching happens before any reasoning, so private reasoning never
-                 steers what is asked of the cloud.
-  3. re-verify-- sha256 of every entry; the cloud's statutory quotes and calculator
-                 parameters are re-checked against the fetched statute (the device
-                 does not trust the cloud's audit).
-  4. facts    -- the local model extracts dates/amounts; each is kept only if its quote
-                 is verbatim from the client account AND contains that date/amount.
-  5. steps    -- arithmetic steps are computed by code (device/calc.py) from verified
-                 facts and verified statutory parameters; judgment steps are answered by
-                 the local model with the precomputed pitfall notes, then pass the
-                 grounding gate (verbatim client evidence + fetched authority).
+  1. select   -- the base model picks the task from the PUBLIC task index and scope
+                 notes (a closed choice) or "none" -> refuse-and-flag. Local only.
+  2. fetch    -- one fixed batch of `fetch_budget` text PIR queries (statute text and
+                 precomputed reasoning), then exactly c adapter PIR queries for one
+                 adapter. The same counts for every matter, including a refusal (dummy
+                 rows and a dummy adapter pad the schedule). Fetching happens before any
+                 reasoning, so private reasoning never steers what is asked of the cloud.
+  3. verify   -- sha256 of every text entry and of the adapter against the public
+                 manifest; the cloud's statutory quotes and calculator parameters are
+                 re-checked against the fetched statute.
+  4. facts    -- the base model extracts dates and amounts; each is kept only if its
+                 quote is verbatim from the account and contains that value.
+  5. steps    -- the fixed public question list. Calculator steps are code
+                 (device/calc.py). Model steps run on the resident model, with or
+                 without the adapter and the precomputed analysis depending on the arm,
+                 and pass the grounding gate. A grounded NO on a precondition stops the
+                 matter as REFUSE-AND-FLAG.
+
+Arms: B (base, statute), T (base, statute + precomputed analysis), A (adapter,
+statute), AT (adapter, statute + precomputed analysis), TEACHER (cloud model, statute;
+fictional matters only, outside the tripwire, as an upper bound).
 
 A tripwire makes any call to the cloud LLM router during a matter raise.
 """
@@ -30,35 +35,57 @@ import json
 import os
 import random
 import re
+import time
 
 import numpy as np
 
 import llm
+from adapters.convert import from_record
 from cloud.reason import FACT_FIELDS, P, verbatim
 from device import calc
 from device.egress import EgressGuard
+from device.prompts import SYS_STEP, step_prompt
 from lawtext import amounts_in, dates_in, numbers_in
-from pir.simplepir import PIRClient, PIRServer
+from pir.adapters import AdapterFetcher
+from pir.simplepir import PIRClient, PIRServer, cells_for, pack, plaintext_bits, unpack
 
 RICH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "artifacts", "cloud_rich"))
 GROUNDED_MIN = 0.6          # below this fraction of decided steps -> REFER
+ARMS = {"B": dict(adapter=False, analysis=False), "T": dict(adapter=False, analysis=True),
+        "A": dict(adapter=True, analysis=False), "AT": dict(adapter=True, analysis=True),
+        "TEACHER": dict(adapter=False, analysis=False, cloud=True)}
+UNCAPPED = {P + "s100", P + "s103A"}     # s124(1A)
 
 
 # ------------------------------------------------------------------ the cloud
 class RichCloud:
-    """Untrusted: holds the public rich DB, answers PIR queries, records its view."""
+    """Untrusted: holds the public rich DB (statute text and precomputed reasoning),
+    answers PIR queries, records its view."""
 
-    def __init__(self):
-        self.D = np.load(os.path.join(RICH, "pir_db.npy"))
-        self.server = PIRServer(self.D, seed=2024)
-        self.seen: list[np.ndarray] = []
+    def __init__(self, seed: int = 2024):
+        raw = np.load(os.path.join(RICH, "pir_db.npy"))            # [710, 2048] bytes
+        self.b = plaintext_bits(raw.shape[0])
+        self.row_bytes = raw.shape[1]
+        L = cells_for(self.row_bytes, self.b)
+        self.server = PIRServer(np.stack([pack(r.tobytes(), self.b, L) for r in raw]), self.b, seed=seed)
+        self.seed = seed
+        self._H = None
+
+    @property
+    def m(self) -> int:
+        return self.server.m
 
     def hint(self):
-        return self.server.A, self.server.hint()
+        if self._H is None:
+            self._H = self.server.hint()
+        return self._H
 
-    def answer(self, qu):
-        self.seen.append(qu.copy())
-        return self.server.answer(qu)
+    def answer(self, Qu):
+        return self.server.answer(Qu)
+
+    @property
+    def views(self):
+        return self.server.views
 
 
 class RouterTripwire:
@@ -163,48 +190,65 @@ SYS_SELECT = ("You triage confidential legal matters on a solicitor's laptop. "
               "Reply with a single JSON object.")
 SYS_FACTS = ("You extract facts from a confidential client note. Copy quotes exactly. "
              "Reply with a single JSON object.")
-SYS_STEP = ("You assist a UK employment solicitor on a confidential matter. Answer ONE "
-            "question by applying ONLY the law provided to the client's account. Do not "
-            "assume facts that are not in the account. Reply with a single JSON object.")
 
 
 class SealedDevice:
-    def __init__(self, cloud: RichCloud, narrative: str, seed: int = 7):
-        self.cloud, self.narrative = cloud, narrative
-        # public artifacts, synced in full by every device (so syncing leaks nothing)
+    """One matter on the laptop. Public artifacts (catalogue, task index, question list,
+    scope notes, adapter manifest) are synced in full by every device."""
+
+    def __init__(self, text_cloud: RichCloud, adapter_cloud, adapter_fetcher: AdapterFetcher,
+                 narrative: str, seed: int = 7):
+        self.cloud, self.acloud, self.afetch = text_cloud, adapter_cloud, adapter_fetcher
+        self.narrative = narrative
         self.catalogue = json.load(open(os.path.join(RICH, "catalogue.json")))
         self.tasks = json.load(open(os.path.join(RICH, "tasks.json")))
+        self.questions = json.load(open(os.path.join(RICH, "questions.json")))
+        self.scope = json.load(open(os.path.join(RICH, "scope.json")))
         self.budget = json.load(open(os.path.join(RICH, "meta.json")))["fetch_budget"]
-        A, H = cloud.hint()
-        self.pir = PIRClient(A, H, seed=seed)
+        self.pir = PIRClient(text_cloud.seed, text_cloud.hint(), text_cloud.m, text_cloud.b, rng_seed=seed)
         self.rng = random.Random(seed)
         words = set(re.findall(r"[A-Za-z£0-9][\w£,.'-]{4,}", narrative))
         self.guard = EgressGuard(sorted(words))
 
     # 1 ---------------------------------------------------------------------
     def select_task(self) -> str | None:
-        menu = "\n".join(f'- "{t}": {v["description"]}' for t, v in self.tasks.items())
+        llm.use_adapter(None)
+        menu = []
+        for t, v in self.tasks.items():
+            s = self.scope.get(t, {})
+            menu.append(f'- "{t}": {v["description"]}\n  Applies when: {s.get("one_line", "")}\n'
+                        + "".join(f"    + {x}\n" for x in s.get("in_scope", []))
+                        + "  Does not apply to:\n" + "".join(f"    - {x}\n" for x in s.get("out_of_scope", [])))
         out = llm.device_chat_json(SYS_SELECT, (
-            f"Task types this practice covers:\n{menu}\n\nClient account:\n<<<\n{self.narrative}\n>>>\n\n"
+            "Task types this practice covers:\n" + "\n".join(menu) +
+            f"\nClient account:\n<<<\n{self.narrative}\n>>>\n\n"
             'Which task type is this matter? Reply {"task": "<one id from the list>"} '
             'or {"task": "none"} if none of them fits.'), max_tokens=60)
         t = str(out.get("task", "none"))
         return t if t in self.tasks else None
 
     # 2 + 3 ---------------------------------------------------------------------
+    def _text_keys(self, task: str | None) -> list[str]:
+        if not task:
+            return []
+        keys = list(self.tasks[task]["entry_keys"])
+        keys += [f"text:{c}" for c in self.questions[task]["statute"] if f"text:{c}" not in keys]
+        return keys
+
     def fetch(self, task: str | None) -> dict:
-        keys = self.tasks[task]["entry_keys"] if task else []
+        """The fixed schedule: `budget` text queries in one batch, then c adapter queries."""
+        keys = self._text_keys(task)
         wanted = [r for k in keys for r in range(self.catalogue[k]["row"],
                                                  self.catalogue[k]["row"] + self.catalogue[k]["n_rows"])]
-        plan = wanted + [self.rng.randrange(self.cloud.D.shape[0]) for _ in range(self.budget - len(wanted))]
+        plan = wanted + [self.rng.randrange(self.cloud.m) for _ in range(self.budget - len(wanted))]
         assert len(plan) == self.budget, "matter exceeds the fixed fetch budget"
-        order = list(range(len(plan)))
-        self.rng.shuffle(order)                              # order carries no meaning
-        got: dict[int, bytes] = {}
-        for i in order:
-            qu, s = self.pir.query(plan[i])
-            self.guard.send("pir", qu, note="rich-db row")
-            got[plan[i]] = self.pir.decode(self.cloud.answer(qu), s).tobytes()
+        self.rng.shuffle(plan)                               # order carries no meaning
+        t0 = time.perf_counter()
+        Qu, S = self.pir.query(plan)
+        self.guard.send("pir", Qu, note="rich-db rows")
+        rows = self.pir.decode(self.cloud.answer(Qu), S)
+        got = {r: unpack(rows[j], self.cloud.b, self.cloud.row_bytes) for j, r in enumerate(plan)}
+        text_s = time.perf_counter() - t0
         entries, bad_sha = {}, []
         for k in keys:
             c = self.catalogue[k]
@@ -232,13 +276,25 @@ class SealedDevice:
                     if verbatim(p["quote"], stat) and p["value"] in numbers_in(p["quote"]):
                         q_ok += 1
                         params[e["coordinate"]][name] = p
-        return dict(entries=entries, bad_sha=bad_sha, quotes_rechecked=(q_ok, q_all),
-                    params=params, queries=len(plan))
+        # adapter: exactly c queries for one adapter (a dummy one when refusing)
+        names = [e["name"] for e in self.afetch.manifest]
+        idx = names.index(task) if task in names else self.rng.randrange(len(names))
+        t0 = time.perf_counter()
+        adapter_raw = self.afetch.fetch(idx, self.acloud, guard=self.guard)   # raises on sha mismatch
+        adapter_s = time.perf_counter() - t0
+        lay = self.afetch.lay
+        return dict(entries=entries, bad_sha=bad_sha, quotes_rechecked=(q_ok, q_all), params=params,
+                    text_queries=len(plan), adapter_queries=lay["c"], adapter_index=idx,
+                    adapter=adapter_raw if task in names else None,
+                    adapter_sha_ok=True, text_s=text_s, adapter_s=adapter_s,
+                    bytes=dict(text_up=Qu.nbytes, text_down=4 * len(plan) * self.pir.H.shape[1],
+                               adapter_up=lay["upload"], adapter_down=lay["download"]))
 
     # 4 ---------------------------------------------------------------------
-    def extract_facts(self, proc: dict) -> tuple[dict, dict, list]:
-        notes = proc.get("fact_notes", {})
-        spec = "\n".join(f'  "{n}" ({t}): {notes.get(n, "")}' for n, t in FACT_FIELDS.items())
+    def extract_facts(self, task: str) -> tuple[dict, dict, list]:
+        llm.use_adapter(None)
+        fdef = self.questions[task]["facts"]
+        spec = "\n".join(f'  "{n}" ({v["type"]}): {v["note"]}' for n, v in fdef.items())
         try:
             raw = llm.device_chat_json(SYS_FACTS, (
                 f"Client account:\n<<<\n{self.narrative}\n>>>\n\nExtract these facts:\n{spec}\n\n"
@@ -251,7 +307,9 @@ class SealedDevice:
         return verify_facts(raw, self.narrative)
 
     # 5 ---------------------------------------------------------------------
-    def _law_block(self, entries: dict, authority: list[str]) -> str:
+    @staticmethod
+    def law_block(entries: dict, authority: list[str]) -> str:
+        """The precomputed public analysis for a step (arms T and AT)."""
         lines = []
         for c in authority:
             e = entries.get(f"explain:{c}")
@@ -267,7 +325,7 @@ class SealedDevice:
             lines.append("Related provisions:")
             lines += [f"  [{e['a'].split('/')[-1]} <-> {e['b'].split('/')[-1]}] ({e['relation']}) "
                       f"{e['analysis']}" for e in rel]
-        return "\n".join(lines)
+        return "\n".join(lines) if lines else "(no precomputed analysis for these provisions)"
 
     def calc_step(self, step: dict, fetched: dict, facts: dict, quotes: dict) -> dict:
         tracked = _Tracked(facts)
@@ -283,80 +341,93 @@ class SealedDevice:
         return {**base, "answer": ans, "value": value, "status": "computed", "reasoning": why,
                 "evidence": [quotes[k] for k in used]}
 
-    def model_step(self, step: dict, entries: dict, facts: dict) -> dict:
-        allowed = set(step["authority"])
-        for k, e in entries.items():
-            if k.startswith("relation:") and (e["a"] in allowed or e["b"] in allowed):
-                allowed |= {e["a"], e["b"]}
-        pit = "\n".join(f"  - {p}" for p in step.get("pitfalls", []))
-        known = "\n".join(f"  - {k}: {v}" for k, v in facts.items())
-        user = (f"QUESTION: {step['question']}\n\n"
-                f"LAW (precomputed public analysis, verified against the statute):\n"
-                f"{self._law_block(entries, step['authority'])}\n\n"
-                f"PITFALLS to avoid:\n{pit}\n\n"
-                f"Verified facts (already checked against the account):\n{known}\n\n"
-                f"CLIENT ACCOUNT (confidential):\n<<<\n{self.narrative}\n>>>\n\n"
-                'Return JSON: {"answer": "yes" | "no" | "unclear", '
-                '"reasoning": "2-4 sentences applying the law to the facts", '
-                '"evidence": ["sentences or phrases copied EXACTLY from the CLIENT ACCOUNT"], '
-                '"authority": ["provision coordinates you relied on, e.g. uk/ukpga/1996/18/s95"]}')
+    def model_step(self, step: dict, fetched: dict, facts: dict, arm: dict, proc: dict | None) -> dict:
+        entries = fetched["entries"]
+        statute = {c: entries[f"text:{c}"] for c in step["authority"] if f"text:{c}" in entries}
+        analysis = None
+        s = dict(step)
+        if arm["analysis"]:
+            analysis = self.law_block(entries, step["authority"])
+            s["pitfalls"] = next((x["pitfalls"] for x in (proc or {}).get("steps", []) if x["id"] == step["id"]), [])
+        shown = {k: (v.isoformat() if isinstance(v, dt.date) else v) for k, v in facts.items()}
+        user = step_prompt(s, statute, shown, self.narrative, analysis)
+        t0 = time.perf_counter()
         try:
-            out = llm.device_chat_json(SYS_STEP, user, max_tokens=500)
+            out = (llm.cloud_chat_json(SYS_STEP, user) if arm.get("cloud")
+                   else llm.device_chat_json(SYS_STEP, user, max_tokens=500))
         except ValueError:
             out = {"answer": "unclear", "reasoning": "model returned no valid JSON"}
-        g = ground(out, self.narrative, allowed)
+        g = ground(out, self.narrative, set(step["authority"]))
         g.update(step_id=step["id"], question=step["question"], kind="model", value=None,
-                 step_authority=step["authority"])
+                 step_authority=step["authority"], seconds=time.perf_counter() - t0)
         return g
 
-    def advise(self) -> dict:
-        with RouterTripwire() as tw:
-            task = self.select_task()
+    def run_steps(self, task: str, fetched: dict, facts: dict, quotes: dict, arm_name: str) -> tuple[list, str]:
+        arm = ARMS[arm_name]
+        proc = fetched["entries"].get(f"procedure:{task}")
+        steps, by_id = [], {}
+        for step in self.questions[task]["steps"]:
+            if step["kind"] == "calc":
+                s = self.calc_step(step, fetched, facts, quotes)
+                # pre-registered derived rules (cloud/questions.py)
+                if step["id"] == "payment_amount" and s["status"] == "computed" and any(
+                        by_id.get(k, {}).get("answer") == "no" and by_id[k]["status"] == "grounded"
+                        for k in ("by_reason_of_redundancy", "suitable_alternative")):
+                    s.update(answer="no", value=0, reasoning="No payment: the dismissal is not by reason of "
+                             "redundancy, or the employee unreasonably refused an offer covered by s141(2).")
+                if step["id"] == "compensation_cap" and s["status"] == "computed":
+                    au = by_id.get("automatic_unfair_reason", {})
+                    if au.get("answer") == "yes" and au.get("status") == "grounded" and UNCAPPED & set(au["authority"]):
+                        s.update(value="uncapped", reasoning="s124(1A): no cap where the dismissal is "
+                                 "automatically unfair under s100 or s103A.")
+            else:
+                s = self.model_step(step, fetched, facts, arm, proc)
+            steps.append(s)
+            by_id[step["id"]] = s
+            if step.get("precondition") and s["answer"] == "no" and s["status"] == "grounded":
+                return steps, f"REFUSE-AND-FLAG: precondition '{step['id']}' failed"
+        scored = [s for s, q in zip(steps, self.questions[task]["steps"]) if q.get("scored", True)]
+        decided = sum(s["status"] in ("grounded", "computed") for s in scored) / max(len(scored), 1)
+        verdict = ("ANSWERED (every step computed or grounded)" if decided == 1 else
+                   "ANSWERED WITH FLAGS" if decided >= GROUNDED_MIN else
+                   "REFER: could not decide enough steps")
+        return steps, verdict
+
+    def advise(self, arm_name: str, task: str | None = None, routed: bool = True,
+               facts_cache: tuple | None = None) -> dict:
+        """One matter in one arm. `task` overrides routing (the evaluation scores arms with
+        the key's task); `facts_cache` reuses the shared base-model fact stage."""
+        arm = ARMS[arm_name]
+        t_start = time.perf_counter()
+        ctx = RouterTripwire() if not arm.get("cloud") else _NoTrip()
+        with ctx as tw:
+            if routed:
+                task = self.select_task()
             fetched = self.fetch(task)
+            res = dict(arm=arm_name, task=task, fetched={k: v for k, v in fetched.items()
+                                                         if k not in ("entries", "adapter")})
             if task is None:
-                return dict(task=None, verdict="REFUSE-AND-FLAG: outside covered task types",
-                            steps=[], fetched=fetched, router_calls=tw.calls, memo=None)
-            proc = fetched["entries"].get(f"procedure:{task}")
-            if proc is None:
-                return dict(task=task, verdict="REFUSE: procedure failed integrity check",
-                            steps=[], fetched=fetched, router_calls=tw.calls, memo=None)
-            facts, quotes, rejected = self.extract_facts(proc)
-            steps = [self.calc_step(s, fetched, facts, quotes) if s["kind"] == "calc"
-                     else self.model_step(s, fetched["entries"], facts)
-                     for s in proc["steps"]]
-            decided = sum(s["status"] in ("grounded", "computed") for s in steps) / max(len(steps), 1)
-            verdict = ("ANSWERED (every step computed or grounded)" if decided == 1 else
-                       "ANSWERED WITH FLAGS" if decided >= GROUNDED_MIN else
-                       "REFER: could not decide enough steps")
-            memo = render_memo(proc, steps, fetched, facts, quotes, rejected, verdict)
-            return dict(task=task, verdict=verdict, steps=steps, fetched=fetched, facts=facts,
-                        facts_rejected=rejected, router_calls=tw.calls, memo=memo)
+                return dict(res, verdict="REFUSE-AND-FLAG: outside covered task types", steps=[],
+                            router_calls=tw.calls, seconds=time.perf_counter() - t_start, swap_s=None)
+            swap = None
+            facts, quotes, rejected = facts_cache or self.extract_facts(task)
+            if arm["adapter"]:
+                w, cfg = from_record(fetched["adapter"])
+                swap = llm.use_adapter(w, cfg)
+            else:
+                llm.use_adapter(None)
+            steps, verdict = self.run_steps(task, fetched, facts, quotes, arm_name)
+            llm.use_adapter(None)
+            return dict(res, verdict=verdict, steps=steps, facts={k: str(v) for k, v in facts.items()},
+                        facts_rejected=rejected, router_calls=tw.calls, swap_s=swap,
+                        seconds=time.perf_counter() - t_start)
 
 
-def render_memo(proc, steps, fetched, facts, quotes, rejected, verdict) -> str:
-    E = fetched["entries"]
-    out = [f"# Advice note: {proc['description']}",
-           f"Drafted on-device ({llm.DEVICE_MODEL}). Status: {verdict}.", "",
-           "## Verified client facts"]
-    out += [f'- {k}: {v}  ("{quotes[k]}")' for k, v in facts.items()]
-    if rejected:
-        out.append(f"- ({len(rejected)} extracted fact(s) rejected: not literally in the account)")
-    out.append("")
-    for i, s in enumerate(steps, 1):
-        out.append(f"## {i}. {s['question']}")
-        val = f" — {s['value']}" if s.get("value") not in (None, "") else ""
-        tag = "computed by code" if s["kind"] == "calc" else "on-device model"
-        out.append(f"**Answer: {s['answer'].upper()}{val}** [{s['status']}; {tag}]")
-        out.append(s["reasoning"])
-        if s["evidence"]:
-            out += [f'  > "{e}"' for e in s["evidence"]]
-        if s.get("evidence_rejected"):
-            out.append(f"  ! rejected {len(s['evidence_rejected'])} quote(s) not found in the account")
-        out.append("Law (statute fetched by PIR, sha256-verified on device):")
-        for c in (s["authority"] or s["step_authority"]):
-            sha = hashlib.sha256(E.get("text:" + c, "").encode()).hexdigest()[:12]
-            out.append(f"  - {c} (sha256 {sha})")
-            for p in fetched["params"].get(c, {}).values():
-                out.append(f'      "{p["quote"]}"')
-        out.append("")
-    return "\n".join(out)
+class _NoTrip:
+    calls = 0
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False

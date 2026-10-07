@@ -223,10 +223,23 @@ def audit(task: str, spec: dict, note: str, ans: dict, qs: dict, statute: dict,
 
 
 # ------------------------------------------------------------------ build
+def _retry(fn, tries: int = 4):
+    """Retry router overload (HTTP 5xx, timeouts) with backoff; other errors propagate."""
+    import time
+    import urllib.error
+    for k in range(tries):
+        try:
+            return fn()
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+            if k == tries - 1 or (isinstance(e, urllib.error.HTTPError) and e.code < 500):
+                raise
+            time.sleep(20 * 2 ** k)
+
+
 def _cached(path: str, fn):
     if os.path.exists(path):
         return json.load(open(path))
-    out = fn()
+    out = _retry(fn)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     json.dump(out, open(path, "w"), indent=1, ensure_ascii=False)
     return out

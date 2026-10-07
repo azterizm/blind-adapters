@@ -147,11 +147,79 @@ def sweep(S: int, Ns=(2, 16, 128, 1024), cs=(16, 64, 256, 1024), measured: dict 
     return rows
 
 
+def client_bench(S: int, Ns=(2, 16, 128, 1024), cs=(16, 64, 256, 1024), max_hint=3.1e9, max_upload=1.5e9) -> dict:
+    """Laptop time for one fetch on the device: build c queries and decode c answers,
+    with a random hint of the right shape (timing does not depend on its content)."""
+    import time
+    out = {}
+    for N in Ns:
+        for c in cs:
+            lay = layout(N, S, c)
+            if lay["hint"] > max_hint or lay["upload"] > max_upload:
+                continue
+            rng = np.random.default_rng(0)
+            H = rng.integers(0, 1 << 32, size=(N_LWE, lay["L"]), dtype=np.uint32)
+            cli = PIRClient(1, H, lay["m"], lay["b"], rng_seed=2)
+            t = time.perf_counter()
+            Qu, Sec = cli.query([j for j in range(c)])
+            q_s = time.perf_counter() - t
+            ans = rng.integers(0, 1 << 32, size=(c, lay["L"]), dtype=np.uint32)
+            t = time.perf_counter()
+            cli.decode(ans, Sec)
+            d_s = time.perf_counter() - t
+            out[f"{N},{c}"] = dict(client_s=q_s + d_s, client_query_s=q_s, client_decode_s=d_s)
+            print(f"client N={N} c={c}: query {q_s:.2f}s decode {d_s:.2f}s", flush=True)
+            del H, Qu, ans
+    return out
+
+
+TASKS = ["uk_unfair_dismissal", "uk_redundancy_payment"]
+
+
+def write_library(variant: str) -> dict:
+    """Publish the real adapters as delivery records plus the public manifest."""
+    import shutil
+    d = os.path.join(ROOT, "artifacts", "library")
+    os.makedirs(d, exist_ok=True)
+    recs = []
+    for i, t in enumerate(TASKS):
+        src = os.path.join(ROOT, "artifacts", "adapters", t, f"adapter.{variant}")
+        shutil.copyfile(src, os.path.join(d, f"{t}.{variant}"))
+        raw = open(src, "rb").read()
+        recs.append(dict(index=i, name=t, file=f"{t}.{variant}", size=len(raw),
+                         sha256=hashlib.sha256(raw).hexdigest()))
+    man = dict(variant=variant, records=recs)
+    json.dump(man, open(os.path.join(d, "manifest.json"), "w"), indent=1)
+    return man
+
+
+def load_library(N: int, c: int, seed: int = 11):
+    """The real library padded with fillers to N: (cloud, public manifest, layout)."""
+    d = os.path.join(ROOT, "artifacts", "library")
+    man = json.load(open(os.path.join(d, "manifest.json")))
+    recs = [(e["name"], open(os.path.join(d, e["file"]), "rb").read()) for e in man["records"]]
+    D, manifest, lay = build(recs, N, c)
+    return AdapterCloud(D, lay, seed=seed), manifest, lay
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--sweep", action="store_true")
+    ap.add_argument("--library", choices=["fp16", "int8"], help="publish the delivery records")
+    ap.add_argument("--client-bench", action="store_true", help="time the device side, store in results/pir_sweep.json")
     ap.add_argument("--size", type=int, default=0, help="record bytes S (default: the largest delivery record)")
     a = ap.parse_args()
+    if a.library:
+        print(json.dumps(write_library(a.library), indent=1))
+    if a.client_bench:
+        S = a.size or max(e["size"] for e in json.load(open(os.path.join(ROOT, "artifacts", "library", "manifest.json")))["records"])
+        res = os.path.join(ROOT, "results", "pir_sweep.json")
+        old = json.load(open(res)) if os.path.exists(res) else dict(S=S, measured={})
+        for k, v in client_bench(S).items():
+            old["measured"].setdefault(k, {}).update(v)
+        old["meta"] = dict(old.get("meta", {}), client_machine="laptop (Apple M4, 16 GB)")
+        os.makedirs(os.path.dirname(res), exist_ok=True)
+        json.dump(old, open(res, "w"), indent=1)
     if a.sweep:
         S = a.size
         if not S:

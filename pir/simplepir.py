@@ -189,7 +189,11 @@ class PIRClient:
 
     def decode(self, Ans: np.ndarray, S: np.ndarray) -> np.ndarray:
         """Returns the wanted rows as cells, uint [k, L]."""
-        resid = (Ans.astype(np.int64) - mul_full(S.T, self.H).astype(np.int64)) & _MASK
+        St = np.ascontiguousarray(S.T)
+        sH = np.empty(Ans.shape, dtype=np.uint32)
+        for c0 in range(0, self.H.shape[1], 1 << 16):          # blocked: the hint can be GBs
+            sH[:, c0:c0 + (1 << 16)] = mul_full(St, self.H[:, c0:c0 + (1 << 16)])
+        resid = (Ans.astype(np.int64) - sH.astype(np.int64)) & _MASK
         v = np.floor(resid / self.delta + 0.5).astype(np.int64)
         return ((v + self.p // 2) % self.p).astype(cell_dtype(self.b))
 
