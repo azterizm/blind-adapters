@@ -1,0 +1,39 @@
+{
+ "N": 16,
+ "c": 1024,
+ "layout": {
+  "N": 16,
+  "S": 46566168,
+  "c": 1024,
+  "m": 16384,
+  "b": 8,
+  "chunk": 45475,
+  "L": 45475,
+  "hint": 186265600,
+  "upload": 67108864,
+  "download": 186265600,
+  "server_madds": 762943897600
+ },
+ "hint_bytes": 186265728,
+ "hint_download_s": 101.48795890808105,
+ "hint_compute_s": 27.938881874084473,
+ "cold_start_and_setup_s": 285.14312291145325,
+ "fetches": [
+  {
+   "name": "uk_unfair_dismissal",
+   "byte_exact_and_sha": true,
+   "wall_s": 153.85332989692688,
+   "upload": 67108992,
+   "download": 186265728,
+   "server_s": 26.697677612304688
+  },
+  {
+   "name": "uk_redundancy_payment",
+   "byte_exact_and_sha": true,
+   "wall_s": 156.36932706832886,
+   "upload": 67108992,
+   "download": 186265728,
+   "server_s": 25.955125093460083
+  }
+ ]
+}
