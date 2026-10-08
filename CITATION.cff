@@ -1,25 +1,32 @@
 cff-version: 1.2.0
-message: "If you use blind-counsel or its results, please cite it as below."
-title: "blind-counsel: confidential legal AI on an untrusted cloud without TEEs"
+message: "If you use blind-adapters or its results, please cite it as below."
+title: "blind-adapters: reasoning adapters fetched by private information retrieval"
 abstract: >-
-  Research proof of concept. Keyed obfuscation of an open-weight LLM on an untrusted
-  cloud fails. The operator recovered 100% of secret content. A blind-cloud design
-  keeps client data on the device. Public law reasoning is precomputed in the cloud,
-  fetched by private information retrieval, and applied on the laptop. 0 secrets
-  reached the cloud. Final round verdict: FAIL, task routing 7 of 8.
+  Research proof of concept. A laptop runs Qwen3-8B and fetches a task LoRA adapter
+  from an untrusted cloud by private information retrieval. Pre-registered adapter
+  verdict on 12 held-out legal matters: PASS. The adapter matched precomputed text
+  reasoning in scope and beat the base model on novel questions. 0 secrets reached the
+  cloud. Routing verdict: FAIL, 10 of 12.
 authors:
   - given-names: Abdullah
     family-names: Memon
     email: abdullah@memonsystems.com
     affiliation: Memon Systems Ltd
 version: poc-v1
-date-released: "2026-10-06"
+date-released: "2026-10-08"
 license: AGPL-3.0-only
-repository-code: "https://github.com/azterizm/blind-counsel"
 keywords:
   - confidential computing
   - private information retrieval
+  - LoRA adapters
   - zero trust
   - legal AI
   - on-device AI
-  - model obfuscation
+references:
+  - type: software
+    title: "blind-counsel: confidential legal AI on an untrusted cloud without TEEs"
+    authors:
+      - given-names: Abdullah
+        family-names: Memon
+    version: poc-v1
+    repository-code: "https://github.com/azterizm/blind-counsel"

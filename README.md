@@ -8,7 +8,10 @@ Builds on [blind-counsel](https://github.com/azterizm/blind-counsel) (tag poc-v1
 
 ## Results
 
-RESULTS_PLACEHOLDER
+1. The adapter layer passed its pre-registered rule. On 12 held-out matters the adapter matched the precomputed text layer on in-scope questions (22 of 22) and beat the base model on novel questions by 2 of 6 matters. It made 1 wrong answer that passed the grounding gate, against 3 for the text layer.
+2. Privacy held. 0 secrets reached the cloud. Every matter issued 56 text and 1024 adapter queries, including refusals. 48 of 48 adapter fetches decoded byte-exact and matched the public manifest.
+3. Routing failed its own rule, 10 of 12. Two redundancy matters were routed to unfair dismissal. Both out-of-scope matters were refused.
+4. The INT8 adapter is 46.6 MB. One fetch downloads 186 MB. PIR beats downloading the whole library only from 16 adapters upward. At 1,024 adapters one fetch takes minutes of server time with this layout.
 
 Full details in [REPORT.md](REPORT.md).
 
