@@ -135,7 +135,7 @@ The gate needs a gap of 0.05 or less and a lower NLL with the adapter on both si
 
 INT8 matched FP16 and is the delivered record. Swapping an adapter into the resident model took 9 to 30 ms in the evaluation, with one outlier of 225 ms.
 
-Total Modal cost for training, the PIR benchmarks and the network test was about $6.6.
+Total Modal cost for training, the PIR benchmarks and the network test was about $7.
 
 ---
 
