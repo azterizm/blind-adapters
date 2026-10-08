@@ -1,0 +1,151 @@
+adapter library N=2 c=1024: int8, rows 2048, hint 186 MB (1s), per fetch up 8.4 MB down 186 MB
+
+[held_out] IS-UD1: routed uk_unfair_dismissal (key uk_unfair_dismissal) 10s; run as uk_unfair_dismissal
+  B       5/5 | ANSWERED (every step computed or grounde | 73s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  T       5/5 | ANSWERED (every step computed or grounde | 85s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  A       5/5 | ANSWERED (every step computed or grounde | 75s | swap 21ms | q 56+1024 | leaked 0/12 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 102s | swap 9ms | q 56+1024 | leaked 0/12 | router 0
+  TEACHER 5/5 | ANSWERED (every step computed or grounde | 42s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+
+[held_out] IS-UD2: routed uk_unfair_dismissal (key uk_unfair_dismissal) 6s; run as uk_unfair_dismissal
+  B       5/5 | ANSWERED (every step computed or grounde | 73s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       5/5 | ANSWERED (every step computed or grounde | 87s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       5/5 | ANSWERED (every step computed or grounde | 83s | swap 23ms | q 56+1024 | leaked 0/10 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 100s | swap 11ms | q 56+1024 | leaked 0/10 | router 0
+  TEACHER 5/5 | ANSWERED (every step computed or grounde | 29s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+
+[held_out] IS-R1: routed uk_unfair_dismissal (key uk_redundancy_payment) 6s; run as uk_redundancy_payment
+  B       6/6 | ANSWERED (every step computed or grounde | 49s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  T       6/6 | ANSWERED (every step computed or grounde | 69s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  A       6/6 | ANSWERED (every step computed or grounde | 53s | swap 13ms | q 56+1024 | leaked 0/12 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 69s | swap 10ms | q 56+1024 | leaked 0/12 | router 0
+  TEACHER 6/6 | ANSWERED (every step computed or grounde | 53s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+
+[held_out] IS-R2: routed uk_redundancy_payment (key uk_redundancy_payment) 5s; run as uk_redundancy_payment
+  B       6/6 | ANSWERED (every step computed or grounde | 47s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       6/6 | ANSWERED (every step computed or grounde | 65s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       6/6 | ANSWERED (every step computed or grounde | 57s | swap 225ms | q 56+1024 | leaked 0/10 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 72s | swap 11ms | q 56+1024 | leaked 0/10 | router 0
+  TEACHER 6/6 | ANSWERED (every step computed or grounde | 18s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+
+[held_out] NV-CD1: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       0/5 | REFUSE-AND-FLAG: precondition 'dismissed | 28s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX dismissed                expected yes        got no         grounded
+     XX qualifying_service       expected yes        got None       missing
+     XX automatic_unfair_reason  expected no         got None       missing
+     XX time_limit               expected yes        got None       missing
+     XX compensation_cap         expected 46000      got None       missing
+  T       5/5 | ANSWERED (every step computed or grounde | 104s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+  A       5/5 | ANSWERED (every step computed or grounde | 78s | swap 25ms | q 56+1024 | leaked 0/11 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 98s | swap 9ms | q 56+1024 | leaked 0/11 | router 0
+  TEACHER 5/5 | ANSWERED (every step computed or grounde | 75s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+
+[held_out] NV-CD2: routed uk_unfair_dismissal (key uk_unfair_dismissal) 6s; run as uk_unfair_dismissal
+  B       0/1 | ANSWERED (every step computed or grounde | 77s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+     XX dismissed                expected no         got yes        grounded
+  T       0/1 | ANSWERED (every step computed or grounde | 88s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+     XX dismissed                expected no         got yes        grounded
+  A       0/1 | ANSWERED (every step computed or grounde | 77s | swap 13ms | q 56+1024 | leaked 0/12 | router 0
+     XX dismissed                expected no         got yes        grounded
+  AT      0/1 | ANSWERED (every step computed or grounde | 108s | swap 10ms | q 56+1024 | leaked 0/12 | router 0
+     XX dismissed                expected no         got yes        grounded
+  TEACHER 1/1 | REFUSE-AND-FLAG: precondition 'dismissed | 68s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+
+[held_out] NV-AU1: routed uk_unfair_dismissal (key uk_unfair_dismissal) 6s; run as uk_unfair_dismissal
+  B       3/5 | ANSWERED WITH FLAGS                      | 70s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  T       3/5 | ANSWERED WITH FLAGS                      | 89s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  A       3/5 | ANSWERED WITH FLAGS                      | 70s | swap 13ms | q 56+1024 | leaked 0/12 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  AT      3/5 | ANSWERED WITH FLAGS                      | 91s | swap 10ms | q 56+1024 | leaked 0/12 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  TEACHER 3/5 | ANSWERED WITH FLAGS                      | 92s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+
+[held_out] NV-AU2: routed uk_unfair_dismissal (key uk_unfair_dismissal) 6s; run as uk_unfair_dismissal
+  B       3/5 | ANSWERED WITH FLAGS                      | 71s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  T       3/5 | ANSWERED WITH FLAGS                      | 94s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  A       3/5 | ANSWERED WITH FLAGS                      | 78s | swap 20ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  AT      3/5 | ANSWERED WITH FLAGS                      | 96s | swap 13ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+  TEACHER 3/5 | ANSWERED WITH FLAGS                      | 47s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected no         got unclear    unclear
+     XX time_limit               expected yes        got unclear    unclear
+
+[held_out] NV-SA1: routed uk_redundancy_payment (key uk_redundancy_payment) 7s; run as uk_redundancy_payment
+  B       4/6 | ANSWERED (every step computed or grounde | 65s | swap 0ms | q 56+1024 | leaked 0/14 | router 0
+     XX suitable_alternative     expected no         got yes        grounded
+     XX payment_amount           expected 0          got 12480.0    computed
+  T       4/6 | ANSWERED (every step computed or grounde | 83s | swap 0ms | q 56+1024 | leaked 0/14 | router 0
+     XX suitable_alternative     expected no         got yes        grounded
+     XX payment_amount           expected 0          got 12480.0    computed
+  A       6/6 | ANSWERED (every step computed or grounde | 61s | swap 15ms | q 56+1024 | leaked 0/14 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 76s | swap 11ms | q 56+1024 | leaked 0/14 | router 0
+  TEACHER 6/6 | ANSWERED (every step computed or grounde | 61s | swap 0ms | q 56+1024 | leaked 0/14 | router 0
+
+[held_out] NV-SA2: routed uk_unfair_dismissal (key uk_redundancy_payment) 6s; run as uk_redundancy_payment
+  B       3/6 | REFER: could not decide enough steps     | 57s | swap 0ms | q 56+1024 | leaked 0/15 | router 0
+     XX relevant_date            expected 2026-09-30 got None       unclear
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX payment_amount           expected 4200       got None       unclear
+  T       3/6 | REFER: could not decide enough steps     | 72s | swap 0ms | q 56+1024 | leaked 0/15 | router 0
+     XX relevant_date            expected 2026-09-30 got None       unclear
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX payment_amount           expected 4200       got None       unclear
+  A       3/6 | REFER: could not decide enough steps     | 60s | swap 21ms | q 56+1024 | leaked 0/15 | router 0
+     XX relevant_date            expected 2026-09-30 got None       unclear
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX payment_amount           expected 4200       got None       unclear
+  AT      3/6 | REFER: could not decide enough steps     | 77s | swap 30ms | q 56+1024 | leaked 0/15 | router 0
+     XX relevant_date            expected 2026-09-30 got None       unclear
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX payment_amount           expected 4200       got None       unclear
+  TEACHER 3/6 | REFER: could not decide enough steps     | 40s | swap 0ms | q 56+1024 | leaked 0/15 | router 0
+     XX relevant_date            expected 2026-09-30 got None       unclear
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX payment_amount           expected 4200       got None       unclear
+
+[held_out] OS-1: routed None (key None) 5s; run as None
+  B       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  AT      0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+
+[held_out] OS-2: routed None (key None) 5s; run as None
+  B       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  AT      0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+
+==============================================================================
+arm       correct  wrong  past gate  refused  in-scope  novel f  novel m   secs  swap ms  leaked
+B          35/50      15          4        3        22        3        3     51        0       0
+T          40/50      10          3        2        22        4        4     70        0       0
+A          42/50       8          1        2        22        5        5     58       39       0
+AT         42/50       8          1        2        22        5        5     74       12       0
+TEACHER    43/50       7          0        1        22        6        6     52        0       0
+routing: 10/12  misses: ['IS-R1', 'NV-SA2']
+
+PRE-REGISTERED RULE (held-out, commit f7857640)
+  [PASS] R1 in-scope fields: A 22 >= T 22 and >= B 22
+  [PASS] R2 novel matters A - B = 5 - 3 >= 2, novel fields A 5 >= T 4
+  [PASS] R3 wrong past the gate: A 1 <= T 3
+  [PASS] R4 leaked 0, router calls 0, queries per matter [(56, 1024)] (need [(56, 1024)])
+  [PASS] R5 adapter fetches byte-exact with sha256 match: 48/48
+  [PASS] R6 parity gate: passed
+ADAPTER VERDICT: PASS
+ROUTING VERDICT: FAIL (10/12)
+==============================================================================

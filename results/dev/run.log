@@ -1,0 +1,81 @@
+adapter library N=2 c=1024: int8, rows 2048, hint 186 MB (1s), per fetch up 8.4 MB down 186 MB
+
+[dev] UD-A: routed uk_unfair_dismissal (key uk_unfair_dismissal) 9s; run as uk_unfair_dismissal
+  B       4/5 | ANSWERED WITH FLAGS                      | 74s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected yes        got unclear    unclear
+  T       3/5 | ANSWERED WITH FLAGS                      | 101s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected yes        got unclear    unclear
+     XX automatic_unfair_reason  expected no         got yes        grounded
+  A       4/5 | ANSWERED WITH FLAGS                      | 82s | swap 13ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected yes        got unclear    unclear
+  AT      4/5 | ANSWERED WITH FLAGS                      | 101s | swap 10ms | q 56+1024 | leaked 0/11 | router 0
+     XX qualifying_service       expected yes        got unclear    unclear
+
+[dev] UD-B: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       4/5 | ANSWERED WITH FLAGS                      | 81s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got unclear    ungrounded
+  T       5/5 | ANSWERED (every step computed or grounde | 97s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       5/5 | ANSWERED (every step computed or grounde | 83s | swap 21ms | q 56+1024 | leaked 0/10 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 101s | swap 10ms | q 56+1024 | leaked 0/10 | router 0
+
+[dev] UD-C: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       5/5 | ANSWERED (every step computed or grounde | 79s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       4/5 | ANSWERED WITH FLAGS                      | 92s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got unclear    ungrounded
+  A       5/5 | ANSWERED (every step computed or grounde | 72s | swap 11ms | q 56+1024 | leaked 0/10 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 94s | swap 10ms | q 56+1024 | leaked 0/10 | router 0
+
+[dev] UD-D: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       4/5 | ANSWERED WITH FLAGS                      | 74s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got unclear    ungrounded
+  T       4/5 | ANSWERED WITH FLAGS                      | 91s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got unclear    ungrounded
+  A       5/5 | ANSWERED (every step computed or grounde | 72s | swap 12ms | q 56+1024 | leaked 0/10 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 96s | swap 10ms | q 56+1024 | leaked 0/10 | router 0
+
+[dev] UD-E: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       4/5 | ANSWERED WITH FLAGS                      | 80s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got unclear    ungrounded
+  T       4/5 | ANSWERED (every step computed or grounde | 105s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+     XX automatic_unfair_reason  expected no         got yes        grounded
+  A       5/5 | ANSWERED (every step computed or grounde | 80s | swap 11ms | q 56+1024 | leaked 0/10 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 100s | swap 10ms | q 56+1024 | leaked 0/10 | router 0
+
+[dev] R-A: routed uk_redundancy_payment (key uk_redundancy_payment) 7s; run as uk_redundancy_payment
+  B       6/6 | ANSWERED (every step computed or grounde | 55s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+  T       6/6 | ANSWERED (every step computed or grounde | 71s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+  A       6/6 | ANSWERED (every step computed or grounde | 52s | swap 11ms | q 56+1024 | leaked 0/11 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 68s | swap 10ms | q 56+1024 | leaked 0/11 | router 0
+
+[dev] R-B: routed uk_redundancy_payment (key uk_redundancy_payment) 7s; run as uk_redundancy_payment
+  B       6/6 | ANSWERED (every step computed or grounde | 54s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+  T       6/6 | ANSWERED (every step computed or grounde | 73s | swap 0ms | q 56+1024 | leaked 0/11 | router 0
+  A       6/6 | ANSWERED (every step computed or grounde | 54s | swap 11ms | q 56+1024 | leaked 0/11 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 72s | swap 10ms | q 56+1024 | leaked 0/11 | router 0
+
+[dev] OOS: routed None (key None) 6s; run as None
+  B       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  T       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  A       0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+  AT      0/0 | REFUSE-AND-FLAG: outside covered task ty | 2s | swap 0ms | q 56+1024 | leaked 0/10 | router 0
+
+[dev] dismissal: routed uk_unfair_dismissal (key uk_unfair_dismissal) 7s; run as uk_unfair_dismissal
+  B       5/5 | ANSWERED (every step computed or grounde | 89s | swap 0ms | q 56+1024 | leaked 0/17 | router 0
+  T       5/5 | ANSWERED (every step computed or grounde | 108s | swap 0ms | q 56+1024 | leaked 0/17 | router 0
+  A       5/5 | ANSWERED (every step computed or grounde | 78s | swap 13ms | q 56+1024 | leaked 0/17 | router 0
+  AT      5/5 | ANSWERED (every step computed or grounde | 106s | swap 10ms | q 56+1024 | leaked 0/17 | router 0
+
+[dev] redundancy: routed uk_redundancy_payment (key uk_redundancy_payment) 7s; run as uk_redundancy_payment
+  B       6/6 | ANSWERED (every step computed or grounde | 57s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  T       6/6 | ANSWERED (every step computed or grounde | 76s | swap 0ms | q 56+1024 | leaked 0/12 | router 0
+  A       6/6 | ANSWERED (every step computed or grounde | 59s | swap 11ms | q 56+1024 | leaked 0/12 | router 0
+  AT      6/6 | ANSWERED (every step computed or grounde | 76s | swap 10ms | q 56+1024 | leaked 0/12 | router 0
+
+==============================================================================
+arm       correct  wrong  past gate  refused  in-scope  novel f  novel m   secs  swap ms  leaked
+B          44/48       4          0        1         0        0        0     65        0       0
+T          43/48       5          2        1         0        0        0     82        0       0
+A          47/48       1          0        1         0        0        0     63       13       0
+AT         47/48       1          0        1         0        0        0     82       10       0
+routing: 10/10  misses: []
+==============================================================================

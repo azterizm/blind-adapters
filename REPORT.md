@@ -250,7 +250,7 @@ NV-CD2 failed in every local arm. Each said a resignation after a contractually 
 
 7 of A's 8 wrong fields are calculator fields shared by every arm, the teacher row included. On NV-AU1 and NV-AU2 the base model quoted the dismissal sentence without its date. On NV-SA2 it wrote the start date one day early. Fact verification rejected each value and the calculators returned unclear instead of guessing. The fact stage runs on base weights and is not part of the adapter comparison.
 
-The first held-out attempt was stopped by a session restart before any matter finished. No output was produced or read. The run reported here is the first complete one. Its log is kept with the aborted one in the private artifacts.
+The first held-out attempt was stopped by a session restart before any matter finished. No output was produced or read. The run reported here is the first complete one. Both logs are in results/held_out/.
 
 Routing misrouted IS-R1 and NV-SA2, both redundancy matters, to unfair dismissal. In the product flow both would have received unfair dismissal advice instead of a refusal. The scope notes fixed the blind-counsel miss and both out-of-scope matters here, but did not separate the two in-scope tasks.
 

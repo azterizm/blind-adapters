@@ -1,0 +1,1 @@
+adapter library N=2 c=1024: int8, rows 2048, hint 186 MB (1s), per fetch up 8.4 MB down 186 MB
