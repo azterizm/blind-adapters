@@ -33,4 +33,4 @@ Not solved:
 
 ## Reporting
 
-Report issues to abdullah@memonsystems.com. Do not open public issues for vulnerabilities.
+Report issues through GitHub private vulnerability reporting on the Security tab, or to abdullah@memonsystems.com. Do not open public issues for vulnerabilities.

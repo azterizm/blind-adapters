@@ -15,6 +15,7 @@ authors:
 version: poc-v1
 date-released: "2026-10-08"
 license: AGPL-3.0-only
+repository-code: "https://github.com/azterizm/blind-adapters"
 keywords:
   - confidential computing
   - private information retrieval
