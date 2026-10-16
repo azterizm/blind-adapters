@@ -27,19 +27,15 @@ The adapter matched the precomputed text layer on in-scope questions and made fe
 
 ---
 
-## Product goal
+## Scope and position
 
-The goal is a layered system. This PoC builds and measures only the adapter layer.
+This is adversarial research, not a product. It tests how far confidential legal AI can go with no TEE and no trust in chip vendors.
 
-| Need | Layer | Status |
-|---|---|---|
-| Facts and statute text | Text database fetched by PIR | Built in blind-counsel |
-| Reasoning | 8B student LoRA adapters fetched by PIR | Built here |
-| Prompts neither layer solves | User choice: FHE in the cloud, or a closed frontier model sent the legal coordinates with user consent | Not built |
-
-Not built here: the router that decides between the factual and reasoning layers, FHE, the consented frontier route, hierarchical PIR, an adapter cache, and other legal domains.
+The design covers fixed task types over public law. The cloud cannot compute on client data, so all work on the matter runs on the laptop. Open-ended prompts, new task types and large models need cloud compute on client data. For that, a TEE such as Prem Enclave is the practical option. It trusts the chip vendors, which this research excluded by design.
 
 FHE remains far from practical for this use. blind-counsel cites Llama-2-7B under FHE at 33 to 85 s per token on 8 GPUs, which is 4.6 to 11.8 h per 500 tokens. The laptop arms here take 63 to 82 s per matter.
+
+Not built here: hierarchical PIR, an adapter cache and other legal domains.
 
 ---
 
@@ -66,7 +62,7 @@ Every arm answers the same public question list on the same matters, with the sa
 | T | Qwen3-8B 4-bit, no adapter | Precomputed reasoning by text PIR (blind-counsel) |
 | A | Qwen3-8B 4-bit plus adapter fetched by PIR | None |
 | AT | Qwen3-8B 4-bit plus adapter | Precomputed reasoning |
-| Teacher | gemini-3.8-flash-high | None. Upper bound on fictional matters. The product never sends client data to it. |
+| Teacher | gemini-3.8-flash-high | None. Upper bound on fictional matters. A deployment never sends client data to it. |
 
 ### Question list
 
@@ -252,7 +248,7 @@ NV-CD2 failed in every local arm. Each said a resignation after a contractually 
 
 The first held-out attempt was stopped by a session restart before any matter finished. No output was produced or read. The run reported here is the first complete one. Both logs are in results/held_out/.
 
-Routing misrouted IS-R1 and NV-SA2, both redundancy matters, to unfair dismissal. In the product flow both would have received unfair dismissal advice instead of a refusal. The scope notes fixed the blind-counsel miss and both out-of-scope matters here, but did not separate the two in-scope tasks.
+Routing misrouted IS-R1 and NV-SA2, both redundancy matters, to unfair dismissal. In a deployed flow both would have received unfair dismissal advice instead of a refusal. The scope notes fixed the blind-counsel miss and both out-of-scope matters here, but did not separate the two in-scope tasks.
 
 ---
 

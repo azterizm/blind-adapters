@@ -5,6 +5,7 @@ This is a research proof of concept. Do not use it with real client data.
 ## Threat model
 
 - The cloud is untrusted. This includes the operator, staff, other tenants, physical access and chip vendors. No TEE is used.
+- TEEs are excluded by design to test the limits of the no-TEE approach. A system that computes on client data in the cloud needs one. See the README.
 - The firm's laptop is the only trusted device. Securing it is the firm's responsibility.
 - The cloud model receives public statute text and fictional matters it wrote itself. It never receives client data.
 - Modal runs every cloud role: adapter training on public synthetic data and the PIR server. It sees PIR queries only.
