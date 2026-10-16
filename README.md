@@ -8,7 +8,7 @@ Part of a two-repository study. Builds on [blind-counsel](https://github.com/azt
 
 ## What this is
 
-We tried to remove the TEE from confidential legal AI. The test was strict. The cloud operator, staff, other tenants and chip vendors were all treated as untrusted. [blind-counsel](https://github.com/azterizm/blind-counsel) showed that standard cloud RAG leaked 16 private tokens from one matter where the blind-cloud design leaked 0. This repository adds reasoning adapters fetched by PIR. Together they record what worked, what failed and what it costs. The result shows where a TEE is needed.
+I set out to remove the TEE from confidential legal AI. The test was strict. I treated the cloud operator, staff, other tenants and chip vendors as untrusted. [blind-counsel](https://github.com/azterizm/blind-counsel) showed that standard cloud RAG leaked 16 private tokens from one matter where the blind-cloud design leaked 0. This repository adds reasoning adapters fetched by PIR. Together they record what worked, what failed and what it costs. The result shows where a TEE is needed.
 
 ## Findings
 
