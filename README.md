@@ -17,7 +17,7 @@ I set out to remove the TEE from confidential legal AI. The test was strict. I t
 3. Routing failed its own rule, 10 of 12. Two redundancy matters were routed to unfair dismissal. Both out-of-scope matters were refused.
 4. The INT8 adapter is 46.6 MB. One fetch downloads 186 MB. PIR beats downloading the whole library only from 16 adapters upward. At 1,024 adapters one fetch takes minutes of server time with this layout.
 
-Full details in [REPORT.md](REPORT.md).
+Full details in [REPORT.md](REPORT.md). File map in [INDEX.md](INDEX.md).
 
 ## Limits
 
