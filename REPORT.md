@@ -131,17 +131,17 @@ The gate needs a gap of 0.05 or less and a lower NLL with the adapter on both si
 
 INT8 matched FP16 and is the delivered record. Swapping an adapter into the resident model took 9 to 30 ms in the evaluation, with one outlier of 225 ms.
 
-Total Modal cost for training, the PIR benchmarks and the network test was about $7.
+Total Modal cost for training, the PIR benchmarks and the network test was about \$7.
 
 ---
 
 ## Adapter PIR
 
-The library holds every adapter padded to the largest record, S = 46.6 MB. Random filler records scale it to N. Each record is split into c chunks. A fetch is exactly c queries, sent as one batch and answered as one matrix product. The public manifest lists index, name, size and sha256, and the device rejects a mismatch.
+The library holds every adapter padded to the largest record, $S = 46.6$ MB. Random filler records scale it to $N$. Each record is split into $c$ chunks. A fetch is exactly $c$ queries, sent as one batch and answered as one matrix product. The public manifest lists index, name, size and sha256, and the device rejects a mismatch.
 
-Parameters follow the SimplePIR paper: n 1024, q 2^32, rounded Gaussian noise with sigma 6.4. The plaintext modulus comes from the correctness bound per row count and is capped at 2^8 so the cloud stores one byte per cell.
+Parameters follow the SimplePIR paper: $n = 1024$, $q = 2^{32}$, rounded Gaussian noise with $\sigma = 6.4$. The plaintext modulus $p$ comes from the correctness bound per row count and is capped at $2^8$ so the cloud stores one byte per cell.
 
-| N | c | Rows | Hint MB | Upload MB | Download MB | Server numpy s | Server Go s | Client s | Download-all MB |
+| $N$ | $c$ | Rows | Hint MB | Upload MB | Download MB | Server numpy s | Server Go s | Client s | Download-all MB |
 |---|---|---|---|---|---|---|---|---|---|
 | 2 | 16 | 32 | 11,921 | 0.0 | 186 | 1.1 | 0.3 | - | 93 |
 | 2 | 64 | 128 | 2,980 | 0.0 | 186 | 1.0 | 0.8 | 2.2 | 93 |
@@ -160,17 +160,17 @@ Parameters follow the SimplePIR paper: n 1024, q 2^32, rounded Gaussian noise wi
 | 1024 | 256 | 262,144 | 745 | 268 | 186 | 617 | - | 3.3 | 47,684 |
 | 1024 | 1024 | 1,048,576 | 186 | 4,295 | 186 | 1,600 | - | - | 47,684 |
 
-Times are for one fetch of one adapter. A dash means not measured: client time where the hint exceeds 3.1 GB or the upload exceeds 1.5 GB on the 16 GB laptop, and Go at N = 1024.
+Times are for one fetch of one adapter. A dash means not measured: client time where the hint exceeds 3.1 GB or the upload exceeds 1.5 GB on the 16 GB laptop, and Go at $N = 1024$.
 
-The server cost grows with N times c times S, because each of the c queries scans the whole library. At N = 1024 one fetch takes 4 to 27 minutes of a 48-core server in numpy. Small c keeps server work and upload low but makes the hint large (11.9 GB at c = 16). Large c keeps the hint small but makes the upload large (4.3 GB at N = 1024, c = 1024). No setting is cheap at N = 1024 with this layout.
+The server cost grows with $N \cdot c \cdot S$, because each of the $c$ queries scans the whole library. At $N = 1024$ one fetch takes 4 to 27 minutes of a 48-core server in numpy. Small $c$ keeps server work and upload low but makes the hint large (11.9 GB at $c = 16$). Large $c$ keeps the hint small but makes the upload large (4.3 GB at $N = 1024$, $c = 1024$). No setting is cheap at $N = 1024$ with this layout.
 
-The numpy server is this repository's code on a 48-core Modal container, labelled unoptimized. The Go column is the reference SimplePIR implementation (ahenzinger/simplepir, e9020b0) on a single thread, one full query times c. Its in-memory format needs 4 bytes per cell before packing, so N = 1024 (190 GB) was not run. Client time is the laptop building c queries and decoding c answers. At c = 16 the single-thread reference code is 3 times faster than numpy on 48 cores. At large c numpy is faster, because the batch becomes a real matrix product while the reference code answers queries one by one.
+The numpy server is this repository's code on a 48-core Modal container, labelled unoptimized. The Go column is the reference SimplePIR implementation (ahenzinger/simplepir, e9020b0) on a single thread, one full query times $c$. Its in-memory format needs 4 bytes per cell before packing, so $N = 1024$ (190 GB) was not run. Client time is the laptop building $c$ queries and decoding $c$ answers. At $c = 16$ the single-thread reference code is 3 times faster than numpy on 48 cores. At large $c$ numpy is faster, because the batch becomes a real matrix product while the reference code answers queries one by one.
 
 Text PIR from blind-counsel, for comparison: 710 rows of 2048 bytes, 56 queries per matter, hint 6.7 MB, upload 0.2 MB, download 0.4 MB.
 
 ### Network, laptop to Modal
 
-N = 16, c = 1024, the two trained adapters plus 14 fillers, over a home connection.
+$N = 16$, $c = 1024$, the two trained adapters plus 14 fillers, over a home connection.
 
 | Step | Bytes | Time |
 |---|---|---|
@@ -182,15 +182,15 @@ Both fetches decoded byte-exact and matched the manifest.
 
 ### Download-all
 
-Downloading the whole library gives perfect privacy and needs no server work. It wins whenever the library fits the device. One PIR fetch plus the hint moves fewer bytes than download-all from N = 16 at c = 1024 (745 MB), N = 32 at c = 256, N = 128 at c = 64 and N = 512 at c = 16. At the PoC size of 2 adapters, download-all is 93 MB and is the better choice. PIR matters only for large libraries.
+Downloading the whole library gives perfect privacy and needs no server work. It wins whenever the library fits the device. One PIR fetch plus the hint moves fewer bytes than download-all from $N = 16$ at $c = 1024$ (745 MB), $N = 32$ at $c = 256$, $N = 128$ at $c = 64$ and $N = 512$ at $c = 16$. At the PoC size of 2 adapters, download-all is 93 MB and is the better choice. PIR matters only for large libraries.
 
 ### Checks on the planning numbers
 
 | Planning claim | Measured |
 |---|---|
 | Rank-16 all-linear adapter is 87 MB at FP16 | 87.3 MB FP16, 46.6 MB INT8 with scales |
-| Response is 4x the payload at p = 2^8 | 186 MB downloaded for a 46.6 MB record |
-| Hint is n x row length x 4 bytes | 186 MB at c = 1024, 11.9 GB at c = 16 |
+| Response is 4x the payload at $p = 2^8$ | 186 MB downloaded for a 46.6 MB record |
+| Hint is $n \times$ row length $\times$ 4 bytes | 186 MB at $c = 1024$, 11.9 GB at $c = 16$ |
 | Fetch schedule fixed whatever the cache holds | No cache built; every matter issued 56 + 1024 queries |
 | Hot swap under 20 ms | Median 20 ms on MLX, 9 to 30 ms, one outlier of 225 ms |
 
@@ -256,7 +256,7 @@ Routing misrouted IS-R1 and NV-SA2, both redundancy matters, to unfair dismissal
 
 - The novel set is 6 matters. A difference of 2 matters is a small effect.
 - The teacher wrote the training matters. Held-out matters were written by the author in a similar register. The 8-gram guard prevents copied text, not similar style.
-- The evaluation's PIR server runs in the same process as the device at N = 2. The laptop-to-Modal path was measured separately at N = 16.
+- The evaluation's PIR server runs in the same process as the device at $N = 2$. The laptop-to-Modal path was measured separately at $N = 16$.
 - Calculator fields depend on the shared base-model fact stage, so a fact error costs every arm the same field.
 - The adapter is an attack surface. See SECURITY.md.
 - PIR parameters and code are research grade.
